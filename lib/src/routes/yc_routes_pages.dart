@@ -3,7 +3,6 @@ import 'package:f_yc_pages/f_yc_pages.dart';
 import 'package:f_yc_utils/f_yc_utils.dart';
 import '../apis/apis_auth.dart';
 import '../middleware/yc_middleware_auth.dart';
-import 'yc_routes_names.dart';
 
 class YcRoutesPages {
   static final undefinedRoute = GetPage(
