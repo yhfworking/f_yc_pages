@@ -68,6 +68,7 @@ class _WidgetsTreasureChestKeyButtonState
                   height: 26,
                   child: Image.asset(
                     'assets/icons/icon_key.png',
+                    package: 'f_yc_pages',
                     fit: BoxFit.fill,
                   ),
                 ),
