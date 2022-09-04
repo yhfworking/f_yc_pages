@@ -44,6 +44,7 @@ class WalletPage extends GetView<WalletController> {
                             margin: const EdgeInsets.only(top: 50),
                             child: Image.asset(
                                 'assets/icons/icon_wallet_gold.png',
+                                package: 'f_yc_pages',
                                 fit: BoxFit.fill),
                           ),
                           Expanded(child: Container()),
@@ -60,6 +61,7 @@ class WalletPage extends GetView<WalletController> {
                                     height: 18,
                                     child: Image.asset(
                                         'assets/icons/icon_gold.png',
+                                        package: 'f_yc_pages',
                                         fit: BoxFit.fill),
                                   ),
                                   Text(

@@ -10,7 +10,7 @@ class InviteFriendsPage extends GetView<InviteFriendsController> {
     return GetBuilder<InviteFriendsController>(
       builder: (_) {
         return Scaffold(
-          appBar: AppBar(title: const Text("invite_friends")),
+          appBar: AppBar(title: const Text("邀请好友")),
           body: SafeArea(
             child: Container(),
           ),

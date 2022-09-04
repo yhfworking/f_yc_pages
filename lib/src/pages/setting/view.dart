@@ -10,24 +10,24 @@ class SettingPage extends GetView<SettingController> {
   final VoidCallback logoutCallback;
   const SettingPage({Key? key, required this.logoutCallback}) : super(key: key);
 
-  Widget _cancellationWidgt() {
-    return Container(
-      width: Get.width,
-      decoration: const BoxDecoration(
-          border:
-              Border(bottom: BorderSide(width: 1, color: Color(0xffe5e5e5))),
-          color: Colors.white),
-      child: ListTile(
-        title: const Text(
-          "注销账号",
-          textAlign: TextAlign.center,
-          style:
-              TextStyle(color: Color(0xFFFF5252), fontWeight: FontWeight.w600),
-        ),
-        onTap: () {},
-      ),
-    );
-  }
+  // Widget _cancellationWidgt() {
+  //   return Container(
+  //     width: Get.width,
+  //     decoration: const BoxDecoration(
+  //         border:
+  //             Border(bottom: BorderSide(width: 1, color: Color(0xffe5e5e5))),
+  //         color: Colors.white),
+  //     child: ListTile(
+  //       title: const Text(
+  //         "注销账号",
+  //         textAlign: TextAlign.center,
+  //         style:
+  //             TextStyle(color: Color(0xFFFF5252), fontWeight: FontWeight.w600),
+  //       ),
+  //       onTap: () {},
+  //     ),
+  //   );
+  // }
 
   Widget _logoutWidgt() {
     return Container(
