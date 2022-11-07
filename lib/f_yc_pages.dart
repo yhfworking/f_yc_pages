@@ -1,6 +1,7 @@
 library f_yc_pages;
 
 import 'package:f_yc_config/f_yc_config.dart';
+export 'package:f_yc_widgets/f_yc_widgets.dart';
 export './src/middleware/f_yc_middleware_auth.dart';
 export './src/pages/about_us/index.dart';
 export './src/pages/cancel_account/index.dart';

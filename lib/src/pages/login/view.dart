@@ -1,11 +1,9 @@
 import 'package:f_yc_pages/f_yc_pages.dart';
-import 'package:f_yc_pages/src/routes/f_yc_pages_routes_names.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:f_yc_utils/f_yc_utils.dart';
 import 'package:fluwx_no_pay/fluwx_no_pay.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
-import 'controller.dart';
 
 typedef WxLoginCallback = void Function(String code);
 

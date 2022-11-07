@@ -1,7 +1,6 @@
 import 'package:f_yc_pages/f_yc_pages.dart';
 import 'package:f_yc_utils/f_yc_utils.dart';
 import 'package:flutter/material.dart';
-import 'controller.dart';
 
 class AboutUsPage extends GetView<AboutUsController> {
   const AboutUsPage({Key? key}) : super(key: key);

@@ -2,7 +2,6 @@ import 'package:f_yc_pages/f_yc_pages.dart';
 import 'package:flustars_flutter3/flustars_flutter3.dart';
 import 'package:flutter/material.dart';
 import 'package:f_yc_utils/f_yc_utils.dart';
-import 'controller.dart';
 
 class LogWalletPage extends GetView<LogWalletController> {
   const LogWalletPage({Key? key}) : super(key: key);
