@@ -1,17 +1,18 @@
 import 'dart:async';
-import 'package:f_yc_config/f_yc_config.dart';
+import 'package:f_yc_entity/f_yc_entity.dart';
+import 'package:f_yc_pages/f_yc_pages.dart';
+import 'package:f_yc_storages/f_yc_storages.dart';
 import 'package:f_yc_utils/f_yc_utils.dart';
-
 import 'index.dart';
 
 class MineController extends GetxController {
   MineController();
 
   final state = MineState();
-  late StreamSubscription userInfoUpdateStreamSubscription;
+  late StreamSubscription _userInfoUpdateStreamSubscription;
 
   void resetUserInfo() {
-    YcUser entitysUser = YcConfig.userInfo();
+    FYcEntitysUser entitysUser = FYcStorages.userInfo();
     if (entitysUser.nickname!.isNotEmpty) {
       state.nickname = entitysUser.nickname;
     } else {
@@ -20,7 +21,7 @@ class MineController extends GetxController {
     if (entitysUser.avatar!.isNotEmpty) {
       state.avatar = entitysUser.avatar;
     } else {
-      state.avatar = YcConfig.defalutAvatarUrl();
+      state.avatar = FYcPages.commonConfig.defalutAvatarUrl;
     }
   }
 
@@ -34,8 +35,9 @@ class MineController extends GetxController {
   /// 在 onInit() 之后调用 1 帧。这是进入的理想场所
   @override
   void onReady() {
-    userInfoUpdateStreamSubscription =
-        YcEvents.on<EventsUserInfoUpdate>((event) {
+    _userInfoUpdateStreamSubscription = FYcEventBus.instance
+        .on<FYcEntitysEventsUserInfoUpdate>()
+        .listen((FYcEntitysEventsUserInfoUpdate event) {
       resetUserInfo();
     });
     super.onReady();
@@ -50,7 +52,7 @@ class MineController extends GetxController {
   /// dispose 释放内存
   @override
   void dispose() {
-    YcEvents.off(userInfoUpdateStreamSubscription);
+    _userInfoUpdateStreamSubscription.cancel();
     super.dispose();
   }
 }

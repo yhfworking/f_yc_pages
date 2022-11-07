@@ -1,4 +1,3 @@
-import 'package:package_info_plus/package_info_plus.dart';
 import 'package:f_yc_utils/f_yc_utils.dart';
 import 'index.dart';
 

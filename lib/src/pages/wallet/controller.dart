@@ -1,6 +1,6 @@
 import 'dart:async';
-import 'package:f_yc_apis/f_yc_apis.dart';
-import 'package:f_yc_config/f_yc_config.dart';
+import 'package:f_yc_entity/f_yc_entity.dart';
+import 'package:f_yc_storages/f_yc_storages.dart';
 import 'package:f_yc_utils/f_yc_utils.dart';
 import 'package:f_yc_widgets/f_yc_widgets.dart';
 
@@ -10,25 +10,25 @@ class WalletController extends GetxController {
   WalletController();
 
   final state = WalletState();
-  late StreamSubscription walletUpdateStreamSubscription;
+  late StreamSubscription _walletUpdateStreamSubscription;
 
   void _updateWallet() {
-    YcWallet ycWallet = YcConfig.walletInfo();
-    if (!GetUtils.isNull(ycWallet)) {
-      state.balance = ycWallet.balance;
-      state.money = ycWallet.money;
+    FYcEntitysWallet entitysWallet = FYcStorages.walletInfo();
+    if (!GetUtils.isNull(entitysWallet)) {
+      state.balance = entitysWallet.balance;
+      state.money = entitysWallet.money;
     }
   }
 
   void handleCashOut(int amount) async {
-    if (amount < 1000) {
-      SnackbarUtils.showError('请先选择您要兑换的金额');
-      return;
-    }
-    if (await YcApisDefault.submitCashOut(amount)) {
-      Get.back();
-      SnackbarUtils.showSuccess('提现申请成功，请耐心等待审核！');
-    }
+    // if (amount < 1000) {
+    //   SnackbarUtils.showError('请先选择您要兑换的金额');
+    //   return;
+    // }
+    // if (await YcApisDefault.submitCashOut(amount)) {
+    //   Get.back();
+    //   SnackbarUtils.showSuccess('提现申请成功，请耐心等待审核！');
+    // }
   }
 
   /// 在 widget 内存中分配后立即调用。
@@ -41,13 +41,16 @@ class WalletController extends GetxController {
   /// 在 onInit() 之后调用 1 帧。这是进入的理想场所
   @override
   void onReady() {
-    walletUpdateStreamSubscription = YcEvents.on<EventsWalletUpdate>((event) {
+    _walletUpdateStreamSubscription = FYcEventBus.instance
+        .on<FYcEntitysEventsWalletUpdate>()
+        .listen((FYcEntitysEventsWalletUpdate event) {
       _updateWallet();
     });
-    YcApisDefault.getWalletInfo();
-    YcBehavior ycBehavior = YcConfig.behaviorInfo();
-    if (!GetUtils.isNull(ycBehavior)) {
-      if (ycBehavior.lastAppPraiseDate == 0) {
+
+    // YcApisDefault.getWalletInfo();
+    FYcEntitysBehavior entitysBehavior = FYcStorages.behaviorInfo();
+    if (!GetUtils.isNull(entitysBehavior)) {
+      if (entitysBehavior.lastAppPraiseDate == 0) {
         Get.dialog(const WidgetsAppPraise(), barrierDismissible: false);
       }
     }
@@ -63,7 +66,7 @@ class WalletController extends GetxController {
   /// dispose 释放内存
   @override
   void dispose() {
-    YcEvents.off(walletUpdateStreamSubscription);
+    _walletUpdateStreamSubscription.cancel();
     super.dispose();
   }
 }

@@ -1,6 +1,7 @@
-import 'package:f_yc_config/f_yc_config.dart';
+import 'package:f_yc_pages/f_yc_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:f_yc_utils/f_yc_utils.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 import 'controller.dart';
 
@@ -13,7 +14,7 @@ class UserAgreementPage extends GetView<UserAgreementController> {
       builder: (_) {
         return Scaffold(
             appBar: AppBar(title: const Text('用户协议')),
-            body: WebView(initialUrl: YcConfig.userAgreementUrl()));
+            body: WebView(initialUrl: FYcPages.commonConfig.userAgreementUrl));
       },
     );
   }

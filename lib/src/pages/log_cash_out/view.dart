@@ -1,4 +1,5 @@
-import 'package:f_yc_config/f_yc_config.dart';
+import 'package:f_yc_pages/f_yc_pages.dart';
+import 'package:flustars_flutter3/flustars_flutter3.dart';
 import 'package:flutter/material.dart';
 import 'package:f_yc_utils/f_yc_utils.dart';
 import 'index.dart';
@@ -41,7 +42,7 @@ class LogCashOutPage extends GetView<LogCashOutController> {
                             '￥${NumUtil.getNumByValueDouble(_.state.cashOutLogs[index]['money'] / 100.0, 2)!.toStringAsFixed(2)}',
                             style: TextStyle(
                                 fontSize: 18,
-                                color: YcConfig.primaryColor(),
+                                color: FYcPages.commonConfig.primaryColor,
                                 fontWeight: FontWeight.w400),
                           ),
                           Text(

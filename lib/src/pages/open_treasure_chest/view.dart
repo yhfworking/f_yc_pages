@@ -44,7 +44,7 @@ class OpenTreasureChestPage extends GetView<OpenTreasureChestController> {
                         bottom: 100,
                         child: WidgetsTreasureChestKeyButton(
                           buttonAction: () {
-                            LoggerUtils.write('----立即抢红包--');
+                            FYcLogger.write('----立即抢红包--');
                           },
                         ))
                   ],

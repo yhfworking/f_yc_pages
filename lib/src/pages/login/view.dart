@@ -1,10 +1,10 @@
-import 'package:f_yc_compose/f_yc_compose.dart';
-import 'package:f_yc_config/f_yc_config.dart';
+import 'package:f_yc_pages/f_yc_pages.dart';
+import 'package:f_yc_pages/src/routes/f_yc_routes_names.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:f_yc_utils/f_yc_utils.dart';
+import 'package:fluwx_no_pay/fluwx_no_pay.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
-import '../../routes/yc_routes_names.dart';
 import 'controller.dart';
 
 typedef WxLoginCallback = void Function(String code);
@@ -38,7 +38,7 @@ class LoginPage extends GetView<LoginController> {
                         width: 80,
                         height: 80,
                         child: Image.network(
-                          YcConfig.logoUrl(),
+                          FYcPages.commonConfig.logoUrl,
                           fit: BoxFit.fill,
                         )),
                   ),
@@ -46,7 +46,8 @@ class LoginPage extends GetView<LoginController> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      (wxLoginCallback != null && !YcConfig.isInR())
+                      (wxLoginCallback != null &&
+                              !FYcPages.commonConfig.isInR())
                           ? Container(
                               width: Get.width - 80,
                               height: 48,
@@ -71,7 +72,7 @@ class LoginPage extends GetView<LoginController> {
                                 },
                                 style: ButtonStyle(
                                     backgroundColor: MaterialStateProperty.all(
-                                        YcConfig.primaryColor()),
+                                        FYcPages.commonConfig.primaryColor),
                                     shape: MaterialStateProperty.all(
                                         RoundedRectangleBorder(
                                             borderRadius:
@@ -87,7 +88,8 @@ class LoginPage extends GetView<LoginController> {
                               ),
                             )
                           : Container(),
-                      (appleLoginCallback != null && YcConfig.isInR())
+                      (appleLoginCallback != null &&
+                              FYcPages.commonConfig.isInR())
                           ? Container(
                               width: Get.width - 80,
                               height: 48,
@@ -108,35 +110,37 @@ class LoginPage extends GetView<LoginController> {
                             text: '登录即表示您已经阅读并同意',
                             style: TextStyle(
                                 fontSize: 12.0,
-                                color: YcConfig.primarySubTextColor()),
+                                color:
+                                    FYcPages.commonConfig.primarySubTextColor),
                             children: [
                               TextSpan(
                                 recognizer: TapGestureRecognizer()
                                   ..onTap = () {
-                                    Get.toNamed(YcRoutesNames.userAgreement);
+                                    Get.toNamed(FYcRoutesNames.userAgreement);
                                   },
                                 text: '“用户协议”',
                                 style: TextStyle(
                                     fontSize: 12.0,
                                     fontWeight: FontWeight.w600,
-                                    color: YcConfig.primaryColor()),
+                                    color: FYcPages.commonConfig.primaryColor),
                               ),
                               TextSpan(
                                 text: '和',
                                 style: TextStyle(
                                     fontSize: 12.0,
-                                    color: YcConfig.primarySubTextColor()),
+                                    color: FYcPages
+                                        .commonConfig.primarySubTextColor),
                               ),
                               TextSpan(
                                 recognizer: TapGestureRecognizer()
                                   ..onTap = () {
-                                    Get.toNamed(YcRoutesNames.privacyPolicy);
+                                    Get.toNamed(FYcRoutesNames.privacyPolicy);
                                   },
                                 text: '“隐私政策”',
                                 style: TextStyle(
                                     fontSize: 12.0,
                                     fontWeight: FontWeight.w600,
-                                    color: YcConfig.primaryColor()),
+                                    color: FYcPages.commonConfig.primaryColor),
                               ),
                             ],
                           )))

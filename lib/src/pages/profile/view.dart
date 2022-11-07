@@ -1,8 +1,9 @@
 import 'package:f_yc_config/f_yc_config.dart';
+import 'package:f_yc_pages/f_yc_pages.dart';
+import 'package:f_yc_pages/src/routes/f_yc_routes_names.dart';
 import 'package:f_yc_widgets/f_yc_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:f_yc_utils/f_yc_utils.dart';
-import '../../routes/index.dart';
 import 'index.dart';
 
 class ProfilePage extends GetView<ProfileController> {
@@ -23,15 +24,15 @@ class ProfilePage extends GetView<ProfileController> {
             title: const Text('我的'),
             leading: IconButton(
                 icon: Icon(Icons.monetization_on_outlined,
-                    size: 28, color: YcConfig.primaryColor()),
+                    size: 28, color: FYcPages.commonConfig.primaryColor),
                 onPressed: () {
-                  Get.toNamed(YcRoutesNames.welfareRe);
+                  Get.toNamed(FYcRoutesNames.welfareRe);
                 }),
             actions: [
               Obx(
                 () => TextButton(
                   onPressed: () async {
-                    Get.toNamed(YcRoutesNames.sign);
+                    Get.toNamed(FYcRoutesNames.sign);
                   },
                   style: ButtonStyle(
                     overlayColor: MaterialStateProperty.all(Colors.transparent),
@@ -40,7 +41,7 @@ class ProfilePage extends GetView<ProfileController> {
                     _.state.isSignToday ? '已签到' : '签到现金',
                     style: TextStyle(
                         fontSize: 15,
-                        color: YcConfig.primaryColor(),
+                        color: FYcPages.commonConfig.primaryColor,
                         fontWeight: FontWeight.bold),
                   ),
                 ),

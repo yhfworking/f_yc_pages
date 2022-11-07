@@ -1,4 +1,5 @@
-import 'package:f_yc_config/f_yc_config.dart';
+import 'package:f_yc_pages/f_yc_pages.dart';
+import 'package:flustars_flutter3/flustars_flutter3.dart';
 import 'package:flutter/material.dart';
 import 'package:f_yc_utils/f_yc_utils.dart';
 import 'controller.dart';
@@ -39,14 +40,14 @@ class LogWalletPage extends GetView<LogWalletController> {
                               _.state.walletLogs[index]['amount'].toString(),
                           style: TextStyle(
                               fontSize: 18,
-                              color: YcConfig.primaryColor(),
+                              color: FYcPages.commonConfig.primaryColor,
                               fontWeight: FontWeight.w400),
                         ),
                         Text(
                           '余额${_.state.walletLogs[index]['balance']}',
                           style: TextStyle(
                               fontSize: 14,
-                              color: YcConfig.primarySubTextColor(),
+                              color: FYcPages.commonConfig.primarySubTextColor,
                               fontWeight: FontWeight.w400),
                         )
                       ],

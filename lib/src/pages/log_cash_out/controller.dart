@@ -1,4 +1,3 @@
-import 'package:f_yc_apis/f_yc_apis.dart';
 import 'package:f_yc_utils/f_yc_utils.dart';
 import 'index.dart';
 
@@ -15,8 +14,8 @@ class LogCashOutController extends GetxController {
 
   @override
   void onReady() async {
-    List dataList = await YcApisDefault.queryCashOuts();
-    state.cashOutLogs = dataList;
+    // List dataList = await YcApisDefault.queryCashOuts();
+    // state.cashOutLogs = dataList;
     super.onReady();
   }
 

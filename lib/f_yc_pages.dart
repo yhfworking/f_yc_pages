@@ -1,5 +1,9 @@
 library f_yc_pages;
 
-export 'src/pages/index.dart';
-export 'src/middleware/index.dart';
-export 'src/routes/index.dart';
+import 'package:f_yc_config/f_yc_config.dart';
+
+class FYcPages {
+  static FYcConfigCommonConfig commonConfig = FYcConfigConfigurator.instance
+      .getConfig(configId: KIT_CONFIG_ID)
+      .commonConfig;
+}

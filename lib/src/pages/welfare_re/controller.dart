@@ -1,8 +1,7 @@
 import 'dart:async';
-import 'package:f_yc_apis/f_yc_apis.dart';
-import 'package:f_yc_config/f_yc_config.dart';
+import 'package:f_yc_entity/f_yc_entity.dart';
 import 'package:f_yc_utils/f_yc_utils.dart';
-import 'package:f_yc_widgets/f_yc_widgets.dart';
+import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 
 import 'index.dart';
 
@@ -12,7 +11,7 @@ class WelfareReController extends GetxController {
   final state = WelfareReState();
   final RefreshController refreshController =
       RefreshController(initialRefresh: false);
-  late StreamSubscription welfareReUpdateStreamSubscription;
+  late StreamSubscription _welfareReUpdateStreamSubscription;
 
   void onRefresh() async {
     refreshController.refreshCompleted();
@@ -29,7 +28,7 @@ class WelfareReController extends GetxController {
   }
 
   Future<void> loadDataFromService() async {
-    state.dataList = await YcApisDefault.queryUserWelfareRe();
+    // state.dataList = await YcApisDefault.queryUserWelfareRe();
   }
 
   void handleReceiveWelfare(Map<String, dynamic> map) async {
@@ -39,12 +38,12 @@ class WelfareReController extends GetxController {
       if (amount <= 0 || code.isEmpty) {
         return;
       }
-      bool isSuccess = await YcApisDefault.receiveUserWelfareRe(amount, code);
-      if (isSuccess) {
-        await loadDataFromService();
-        Get.dialog(WidgetsGoldReceive(amount: amount),
-            barrierDismissible: false);
-      }
+      // bool isSuccess = await YcApisDefault.receiveUserWelfareRe(amount, code);
+      // if (isSuccess) {
+      //   await loadDataFromService();
+      //   Get.dialog(WidgetsGoldReceive(amount: amount),
+      //       barrierDismissible: false);
+      // }
     }
   }
 
@@ -52,8 +51,9 @@ class WelfareReController extends GetxController {
   @override
   void onReady() async {
     await loadDataFromService();
-    welfareReUpdateStreamSubscription =
-        YcEvents.on<EventsWelfareReUpdate>((event) async {
+    _welfareReUpdateStreamSubscription = FYcEventBus.instance
+        .on<FYcEntitysEventsWelfareReUpdate>()
+        .listen((FYcEntitysEventsWelfareReUpdate event) async {
       await loadDataFromService();
     });
     super.onReady();
@@ -68,7 +68,7 @@ class WelfareReController extends GetxController {
   /// dispose 释放内存
   @override
   void dispose() {
-    YcEvents.off(welfareReUpdateStreamSubscription);
+    _welfareReUpdateStreamSubscription.cancel();
     super.dispose();
   }
 }

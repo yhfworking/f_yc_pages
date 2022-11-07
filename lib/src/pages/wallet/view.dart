@@ -1,8 +1,9 @@
-import 'package:f_yc_config/f_yc_config.dart';
+import 'package:f_yc_pages/f_yc_pages.dart';
+import 'package:f_yc_pages/src/routes/f_yc_routes_names.dart';
 import 'package:f_yc_widgets/f_yc_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:f_yc_utils/f_yc_utils.dart';
-import '../../routes/yc_routes_names.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'index.dart';
 
 class WalletPage extends GetView<WalletController> {
@@ -17,7 +18,7 @@ class WalletPage extends GetView<WalletController> {
               actions: [
                 TextButton(
                     onPressed: () {
-                      Get.toNamed(YcRoutesNames.logWallet);
+                      Get.toNamed(FYcRoutesNames.logWallet);
                     },
                     style: ButtonStyle(
                         overlayColor:
@@ -68,7 +69,8 @@ class WalletPage extends GetView<WalletController> {
                                     '我的金币:',
                                     style: TextStyle(
                                         fontSize: 16,
-                                        color: YcConfig.primaryColor(),
+                                        color:
+                                            FYcPages.commonConfig.primaryColor,
                                         fontWeight: FontWeight.w600),
                                   ),
                                 ],
@@ -92,7 +94,7 @@ class WalletPage extends GetView<WalletController> {
                                     text: _.state.money ?? '0.00',
                                     style: TextStyle(
                                       fontSize: 16.0,
-                                      color: YcConfig.primaryColor(),
+                                      color: FYcPages.commonConfig.primaryColor,
                                       fontWeight: FontWeight.w600,
                                     ),
                                     children: [
@@ -100,8 +102,8 @@ class WalletPage extends GetView<WalletController> {
                                         text: '元',
                                         style: TextStyle(
                                             fontSize: 12.0,
-                                            color:
-                                                YcConfig.primarySubTextColor(),
+                                            color: FYcPages.commonConfig
+                                                .primarySubTextColor,
                                             fontWeight: FontWeight.w600),
                                       ),
                                     ],
@@ -124,7 +126,7 @@ class WalletPage extends GetView<WalletController> {
                                   overlayColor: MaterialStateProperty.all(
                                       Colors.transparent),
                                   backgroundColor: MaterialStateProperty.all(
-                                      YcConfig.primaryColor())),
+                                      FYcPages.commonConfig.primaryColor)),
                               child: const Text(
                                 '申请兑现',
                                 style: TextStyle(
@@ -141,14 +143,15 @@ class WalletPage extends GetView<WalletController> {
                               children: [
                                 TextButton(
                                   onPressed: () {
-                                    Get.toNamed(YcRoutesNames.logCashOut);
+                                    Get.toNamed(FYcRoutesNames.logCashOut);
                                   },
                                   child: Text(
                                     '兑现记录 >',
                                     style: TextStyle(
                                         fontSize: 15,
                                         fontWeight: FontWeight.w600,
-                                        color: YcConfig.primaryColor()),
+                                        color:
+                                            FYcPages.commonConfig.primaryColor),
                                   ),
                                 ),
                               ],

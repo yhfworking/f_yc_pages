@@ -11,18 +11,29 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  f_yc_compose:
-    git: https://github.com/yhfworking/f_yc_compose.git
   f_yc_utils:
     git: https://github.com/yhfworking/f_yc_utils.git
   f_yc_config:
     git: https://github.com/yhfworking/f_yc_config.git
-  f_yc_apis:
-    git: https://github.com/yhfworking/f_yc_apis.git
+  f_yc_storages:
+    git: https://github.com/yhfworking/f_yc_storages.git
+  f_yc_entity:
+    git: https://github.com/yhfworking/f_yc_entity.git
   f_yc_widgets:
     git: https://github.com/yhfworking/f_yc_widgets.git
-  package_info_plus: ^1.4.3+1
-  sign_in_with_apple: ^4.1.0
+  # f_yc_apis:
+  #   git: https://github.com/yhfworking/f_yc_apis.git
+  # f_yc_compose:
+  #   git: https://github.com/yhfworking/f_yc_compose.git
+  # package_info_plus: ^1.4.3+1
+  sign_in_with_apple: ^4.2.0
+  webview_flutter: ^3.0.4
+  flustars_flutter3: ^3.0.0
+  fluwx_no_pay: ^3.11.0
+  flutter_easyloading: ^3.0.5
+  google_fonts: ^3.0.1
+  pull_to_refresh_flutter3: ^2.0.1
+  bruno: ^3.1.0
 
 dev_dependencies:
   flutter_test:

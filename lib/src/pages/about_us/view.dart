@@ -1,4 +1,4 @@
-import 'package:f_yc_config/f_yc_config.dart';
+import 'package:f_yc_pages/f_yc_pages.dart';
 import 'package:f_yc_utils/f_yc_utils.dart';
 import 'package:flutter/material.dart';
 import 'controller.dart';
@@ -29,16 +29,17 @@ class AboutUsPage extends GetView<AboutUsController> {
                                   width: 80,
                                   height: 80,
                                   child: Image.network(
-                                    YcConfig.logoUrl(),
+                                    FYcPages.commonConfig.logoUrl,
                                     fit: BoxFit.fill,
                                   )),
                               Container(
                                 margin: const EdgeInsets.only(top: 10),
                                 child: Text(
-                                  YcConfig.appName(),
+                                  FYcPages.commonConfig.appName,
                                   style: TextStyle(
                                       fontWeight: FontWeight.w500,
-                                      color: YcConfig.primaryTextColor(),
+                                      color: FYcPages
+                                          .commonConfig.primaryTextColor,
                                       fontSize: 16),
                                 ),
                               ),
@@ -49,7 +50,8 @@ class AboutUsPage extends GetView<AboutUsController> {
                                       'version:' + _.state.version,
                                       style: TextStyle(
                                           fontWeight: FontWeight.w500,
-                                          color: YcConfig.primarySubTextColor(),
+                                          color: FYcPages
+                                              .commonConfig.primarySubTextColor,
                                           fontSize: 14),
                                     )),
                               )
@@ -59,10 +61,11 @@ class AboutUsPage extends GetView<AboutUsController> {
                         Container(
                           margin: const EdgeInsets.only(bottom: 15),
                           child: Text(
-                            YcConfig.copyright(),
+                            FYcPages.commonConfig.copyright,
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                                color: YcConfig.primarySubTextColor(),
+                                color:
+                                    FYcPages.commonConfig.primarySubTextColor,
                                 fontSize: 12),
                           ),
                         )

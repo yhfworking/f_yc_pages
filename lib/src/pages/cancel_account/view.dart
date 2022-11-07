@@ -1,7 +1,6 @@
-import 'package:f_yc_config/f_yc_config.dart';
+import 'package:f_yc_pages/f_yc_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:f_yc_utils/f_yc_utils.dart';
-import '../../apis/apis_auth.dart';
 import 'index.dart';
 
 class CancelAccountPage extends GetView<CancelAccountController> {
@@ -56,8 +55,8 @@ class CancelAccountPage extends GetView<CancelAccountController> {
                     margin: const EdgeInsets.only(bottom: 20),
                     child: ElevatedButton(
                       style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all(YcConfig.primaryColor()),
+                        backgroundColor: MaterialStateProperty.all(
+                            FYcPages.commonConfig.primaryColor),
                         shape: MaterialStateProperty.all(const StadiumBorder()),
                         elevation: MaterialStateProperty.all(0),
                       ),
@@ -71,11 +70,11 @@ class CancelAccountPage extends GetView<CancelAccountController> {
                             elevation: 0,
                             onPressed: () async {
                               Get.back();
-                              await ApisAuth.logout();
+                              // await ApisAuth.logout();
                               Get.back();
                               Get.back();
                             },
-                            color: YcConfig.primaryColor(),
+                            color: FYcPages.commonConfig.primaryColor,
                             child: const Text(
                               "确定",
                               style: TextStyle(color: Colors.white),

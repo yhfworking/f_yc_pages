@@ -1,37 +1,39 @@
 import 'dart:async';
-import 'package:f_yc_config/f_yc_config.dart';
+import 'package:f_yc_entity/f_yc_entity.dart';
+import 'package:f_yc_pages/f_yc_pages.dart';
+import 'package:f_yc_storages/f_yc_storages.dart';
 import 'package:f_yc_utils/f_yc_utils.dart';
-
+import 'package:flustars_flutter3/flustars_flutter3.dart';
 import 'index.dart';
 
 class ProfileController extends GetxController {
   ProfileController();
 
   final state = ProfileState();
-  late StreamSubscription userInfoUpdateStreamSubscription;
-  late StreamSubscription walletUpdateStreamSubscription;
-  late StreamSubscription behaviorUpdateStreamSubscription;
+  late StreamSubscription _userInfoUpdateStreamSubscription;
+  late StreamSubscription _walletUpdateStreamSubscription;
+  late StreamSubscription _behaviorUpdateStreamSubscription;
 
   void updateStates() {
-    YcUser ycUser = YcConfig.userInfo();
-    if (ycUser.nickname!.isNotEmpty) {
-      state.nickname = ycUser.nickname;
+    FYcEntitysUser entitysUser = FYcStorages.userInfo();
+    if (entitysUser.nickname!.isNotEmpty) {
+      state.nickname = entitysUser.nickname;
     } else {
       state.nickname = '立即登录';
     }
-    if (ycUser.avatar!.isNotEmpty) {
-      state.avatar = ycUser.avatar;
+    if (entitysUser.avatar!.isNotEmpty) {
+      state.avatar = entitysUser.avatar;
     } else {
-      state.avatar = YcConfig.defalutAvatarUrl();
+      state.avatar = FYcPages.commonConfig.defalutAvatarUrl;
     }
-    YcWallet ycWallet = YcConfig.walletInfo();
-    if (!GetUtils.isNull(ycWallet)) {
-      state.balance = ycWallet.balance;
-      state.money = ycWallet.money;
+    FYcEntitysWallet entitysWallet = FYcStorages.walletInfo();
+    if (!GetUtils.isNull(entitysWallet)) {
+      state.balance = entitysWallet.balance;
+      state.money = entitysWallet.money;
     }
-    YcBehavior ycBehavior = YcConfig.behaviorInfo();
-    if (!GetUtils.isNull(ycBehavior)) {
-      if (DateUtil.isToday(ycBehavior.lastSignDate)) {
+    FYcEntitysBehavior entitysBehavior = FYcStorages.behaviorInfo();
+    if (!GetUtils.isNull(entitysBehavior)) {
+      if (DateUtil.isToday(entitysBehavior.lastSignDate)) {
         state.isSignToday = true;
       } else {
         state.isSignToday = false;
@@ -49,15 +51,21 @@ class ProfileController extends GetxController {
   /// 在 onInit() 之后调用 1 帧。这是进入的理想场所
   @override
   void onReady() {
-    userInfoUpdateStreamSubscription =
-        YcEvents.on<EventsUserInfoUpdate>((event) {
+    _userInfoUpdateStreamSubscription = FYcEventBus.instance
+        .on<FYcEntitysEventsUserInfoUpdate>()
+        .listen((FYcEntitysEventsUserInfoUpdate event) {
       updateStates();
     });
-    walletUpdateStreamSubscription = YcEvents.on<EventsWalletUpdate>((event) {
+
+    _walletUpdateStreamSubscription = FYcEventBus.instance
+        .on<FYcEntitysEventsWalletUpdate>()
+        .listen((FYcEntitysEventsWalletUpdate event) {
       updateStates();
     });
-    behaviorUpdateStreamSubscription =
-        YcEvents.on<EventsBehaviorUpdate>((event) {
+
+    _behaviorUpdateStreamSubscription = FYcEventBus.instance
+        .on<FYcEntitysEventsBehaviorUpdate>()
+        .listen((FYcEntitysEventsBehaviorUpdate event) {
       updateStates();
     });
     super.onReady();
@@ -72,9 +80,9 @@ class ProfileController extends GetxController {
   /// dispose 释放内存
   @override
   void dispose() {
-    YcEvents.off(userInfoUpdateStreamSubscription);
-    YcEvents.off(walletUpdateStreamSubscription);
-    YcEvents.off(behaviorUpdateStreamSubscription);
+    _userInfoUpdateStreamSubscription.cancel();
+    _walletUpdateStreamSubscription.cancel();
+    _behaviorUpdateStreamSubscription.cancel();
     super.dispose();
   }
 }

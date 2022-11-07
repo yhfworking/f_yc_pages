@@ -1,9 +1,9 @@
-import 'package:f_yc_config/f_yc_config.dart';
+import 'package:f_yc_pages/f_yc_pages.dart';
+import 'package:f_yc_pages/src/routes/f_yc_routes_names.dart';
+import 'package:f_yc_storages/f_yc_storages.dart';
 import 'package:f_yc_widgets/f_yc_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:f_yc_utils/f_yc_utils.dart';
-
-import '../../routes/yc_routes_names.dart';
 import 'controller.dart';
 
 class SettingPage extends GetView<SettingController> {
@@ -41,7 +41,8 @@ class SettingPage extends GetView<SettingController> {
           "退出登录",
           textAlign: TextAlign.center,
           style: TextStyle(
-              color: YcConfig.primaryColor(), fontWeight: FontWeight.w600),
+              color: FYcPages.commonConfig.primaryColor,
+              fontWeight: FontWeight.w600),
         ),
         onTap: () {
           Get.defaultDialog(
@@ -55,7 +56,7 @@ class SettingPage extends GetView<SettingController> {
                 Get.back();
                 logoutCallback();
               },
-              color: YcConfig.primaryColor(),
+              color: FYcPages.commonConfig.primaryColor,
               child: const Text(
                 "确定",
                 style: TextStyle(color: Colors.white),
@@ -86,30 +87,30 @@ class SettingPage extends GetView<SettingController> {
                   title: '用户协议',
                   isArrow: true,
                   onTap: () {
-                    Get.toNamed(YcRoutesNames.userAgreement);
+                    Get.toNamed(FYcRoutesNames.userAgreement);
                   }),
               WidgetsListItem(
                   title: '隐私政策',
                   isArrow: true,
                   onTap: () {
-                    Get.toNamed(YcRoutesNames.privacyPolicy);
+                    Get.toNamed(FYcRoutesNames.privacyPolicy);
                   }),
               WidgetsListItem(
                   title: '关于我们',
                   isArrow: true,
                   onTap: () {
-                    Get.toNamed(YcRoutesNames.aboutUs);
+                    Get.toNamed(FYcRoutesNames.aboutUs);
                   }),
-              (YcConfig.isLogin() && YcConfig.isInR())
+              (FYcStorages.checkLogin() && FYcPages.commonConfig.isInR())
                   ? WidgetsListItem(
                       title: '注销账号',
                       isArrow: true,
                       onTap: () {
-                        Get.toNamed(YcRoutesNames.cancelAccount);
+                        Get.toNamed(FYcRoutesNames.cancelAccount);
                       })
                   : Container(),
               const WidgetsListGroove(),
-              YcConfig.isLogin() ? _logoutWidgt() : Container()
+              FYcStorages.checkLogin() ? _logoutWidgt() : Container()
             ],
           )),
         );
