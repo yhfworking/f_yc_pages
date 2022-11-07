@@ -21,37 +21,37 @@ import 'package:f_yc_pages/src/pages/wallet/index.dart';
 import 'package:f_yc_pages/src/pages/website/index.dart';
 import 'package:f_yc_storages/f_yc_storages.dart';
 import 'package:f_yc_utils/f_yc_utils.dart';
-import 'f_yc_routes_names.dart';
+import 'f_yc_pages_routes_names.dart';
 
-class FYcRoutesPages {
+class FYcPagesRoutesPages {
   static final undefinedRoute = GetPage(
-      name: FYcRoutesNames.undefined,
+      name: FYcPagesRoutesNames.undefined,
       page: () => const UndefinedPage(),
       binding: UndefinedBinding());
   static final List<GetPage> routes = [
     GetPage(
-      name: FYcRoutesNames.website,
+      name: FYcPagesRoutesNames.website,
       page: () => const WebsitePage(),
       binding: WebsiteBinding(),
     ),
     GetPage(
-      name: FYcRoutesNames.userAgreement,
+      name: FYcPagesRoutesNames.userAgreement,
       page: () => const UserAgreementPage(),
       binding: UserAgreementBinding(),
     ),
     GetPage(
-      name: FYcRoutesNames.privacyPolicy,
+      name: FYcPagesRoutesNames.privacyPolicy,
       page: () => const PrivacyPolicyPage(),
       binding: PrivacyPolicyBinding(),
     ),
     GetPage(
-      name: FYcRoutesNames.userInfo,
+      name: FYcPagesRoutesNames.userInfo,
       page: () => const UserInfoPage(),
       middlewares: [FYcMiddlewareAuth()],
       binding: UserInfoBinding(),
     ),
     GetPage(
-      name: FYcRoutesNames.login,
+      name: FYcPagesRoutesNames.login,
       binding: LoginBinding(),
       page: () => LoginPage(wxLoginCallback: (String code) async {
         if (code.isNotEmpty) {
@@ -62,7 +62,7 @@ class FYcRoutesPages {
       }),
     ),
     GetPage(
-      name: FYcRoutesNames.setting,
+      name: FYcPagesRoutesNames.setting,
       page: () => SettingPage(
         logoutCallback: () async {
           // await ApisAuth.logout();
@@ -72,79 +72,79 @@ class FYcRoutesPages {
       binding: SettingBinding(),
     ),
     GetPage(
-      name: FYcRoutesNames.cancelAccount,
+      name: FYcPagesRoutesNames.cancelAccount,
       page: () => CancelAccountPage(
         nickname: FYcStorages.userInfo().nickname ?? '',
       ),
       binding: CancelAccountBinding(),
     ),
     GetPage(
-      name: FYcRoutesNames.aboutUs,
+      name: FYcPagesRoutesNames.aboutUs,
       page: () => const AboutUsPage(),
       binding: AboutUsBinding(),
     ),
     GetPage(
-      name: FYcRoutesNames.wallet,
+      name: FYcPagesRoutesNames.wallet,
       page: () => const WalletPage(),
       middlewares: [FYcMiddlewareAuth()],
       binding: WalletBinding(),
     ),
     GetPage(
-      name: FYcRoutesNames.logWallet,
+      name: FYcPagesRoutesNames.logWallet,
       page: () => const LogWalletPage(),
       middlewares: [FYcMiddlewareAuth()],
       binding: LogWalletBinding(),
     ),
     GetPage(
-      name: FYcRoutesNames.logCashOut,
+      name: FYcPagesRoutesNames.logCashOut,
       page: () => const LogCashOutPage(),
       middlewares: [FYcMiddlewareAuth()],
       binding: LogCashOutBinding(),
     ),
     GetPage(
-      name: FYcRoutesNames.luckyTurntable,
+      name: FYcPagesRoutesNames.luckyTurntable,
       page: () => const LuckyTurntablePage(),
       middlewares: [FYcMiddlewareAuth()],
       binding: LuckyTurntableBinding(),
     ),
     GetPage(
-      name: FYcRoutesNames.dailyTask,
+      name: FYcPagesRoutesNames.dailyTask,
       page: () => const DailyTaskPage(),
       middlewares: [FYcMiddlewareAuth()],
       binding: DailyTaskBinding(),
     ),
     GetPage(
-      name: FYcRoutesNames.ranking,
+      name: FYcPagesRoutesNames.ranking,
       page: () => const RankingPage(),
       middlewares: [FYcMiddlewareAuth()],
       binding: RankingBinding(),
     ),
     GetPage(
-      name: FYcRoutesNames.inviteFriends,
+      name: FYcPagesRoutesNames.inviteFriends,
       page: () => const InviteFriendsPage(),
       middlewares: [FYcMiddlewareAuth()],
       binding: InviteFriendsBinding(),
     ),
     GetPage(
-      name: FYcRoutesNames.openTreasureChest,
+      name: FYcPagesRoutesNames.openTreasureChest,
       page: () => const OpenTreasureChestPage(),
       middlewares: [FYcMiddlewareAuth()],
       binding: OpenTreasureChestBinding(),
     ),
     GetPage(
-      name: FYcRoutesNames.scanRe,
+      name: FYcPagesRoutesNames.scanRe,
       page: () => const ScanRePage(),
       middlewares: [FYcMiddlewareAuth()],
       binding: ScanReBinding(),
     ),
     GetPage(
-      name: FYcRoutesNames.timerRe,
+      name: FYcPagesRoutesNames.timerRe,
       page: () => const TimerRePage(),
       middlewares: [FYcMiddlewareAuth()],
       binding: TimerReBinding(),
     ),
     GetPage(
-      name: FYcRoutesNames.goldIntroRe,
+      name: FYcPagesRoutesNames.goldIntroRe,
       page: () => const GoldIntroPage(),
       middlewares: [FYcMiddlewareAuth()],
       binding: GoldIntroBinding(),

@@ -1,5 +1,5 @@
 import 'package:f_yc_pages/f_yc_pages.dart';
-import 'package:f_yc_pages/src/routes/f_yc_routes_names.dart';
+import 'package:f_yc_pages/src/routes/f_yc_pages_routes_names.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:f_yc_utils/f_yc_utils.dart';
@@ -116,7 +116,8 @@ class LoginPage extends GetView<LoginController> {
                               TextSpan(
                                 recognizer: TapGestureRecognizer()
                                   ..onTap = () {
-                                    Get.toNamed(FYcRoutesNames.userAgreement);
+                                    Get.toNamed(
+                                        FYcPagesRoutesNames.userAgreement);
                                   },
                                 text: '“用户协议”',
                                 style: TextStyle(
@@ -134,7 +135,8 @@ class LoginPage extends GetView<LoginController> {
                               TextSpan(
                                 recognizer: TapGestureRecognizer()
                                   ..onTap = () {
-                                    Get.toNamed(FYcRoutesNames.privacyPolicy);
+                                    Get.toNamed(
+                                        FYcPagesRoutesNames.privacyPolicy);
                                   },
                                 text: '“隐私政策”',
                                 style: TextStyle(

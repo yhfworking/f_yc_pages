@@ -1,5 +1,5 @@
 import 'package:f_yc_pages/f_yc_pages.dart';
-import 'package:f_yc_pages/src/routes/f_yc_routes_names.dart';
+import 'package:f_yc_pages/src/routes/f_yc_pages_routes_names.dart';
 import 'package:f_yc_widgets/f_yc_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:f_yc_utils/f_yc_utils.dart';
@@ -18,7 +18,7 @@ class WalletPage extends GetView<WalletController> {
               actions: [
                 TextButton(
                     onPressed: () {
-                      Get.toNamed(FYcRoutesNames.logWallet);
+                      Get.toNamed(FYcPagesRoutesNames.logWallet);
                     },
                     style: ButtonStyle(
                         overlayColor:
@@ -143,7 +143,7 @@ class WalletPage extends GetView<WalletController> {
                               children: [
                                 TextButton(
                                   onPressed: () {
-                                    Get.toNamed(FYcRoutesNames.logCashOut);
+                                    Get.toNamed(FYcPagesRoutesNames.logCashOut);
                                   },
                                   child: Text(
                                     '兑现记录 >',

@@ -1,6 +1,6 @@
 import 'package:f_yc_config/f_yc_config.dart';
 import 'package:f_yc_pages/f_yc_pages.dart';
-import 'package:f_yc_pages/src/routes/f_yc_routes_names.dart';
+import 'package:f_yc_pages/src/routes/f_yc_pages_routes_names.dart';
 import 'package:f_yc_widgets/f_yc_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:f_yc_utils/f_yc_utils.dart';
@@ -26,13 +26,13 @@ class ProfilePage extends GetView<ProfileController> {
                 icon: Icon(Icons.monetization_on_outlined,
                     size: 28, color: FYcPages.commonConfig.primaryColor),
                 onPressed: () {
-                  Get.toNamed(FYcRoutesNames.welfareRe);
+                  Get.toNamed(FYcPagesRoutesNames.welfareRe);
                 }),
             actions: [
               Obx(
                 () => TextButton(
                   onPressed: () async {
-                    Get.toNamed(FYcRoutesNames.sign);
+                    Get.toNamed(FYcPagesRoutesNames.sign);
                   },
                   style: ButtonStyle(
                     overlayColor: MaterialStateProperty.all(Colors.transparent),

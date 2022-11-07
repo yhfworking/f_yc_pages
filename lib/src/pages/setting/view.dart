@@ -1,5 +1,5 @@
 import 'package:f_yc_pages/f_yc_pages.dart';
-import 'package:f_yc_pages/src/routes/f_yc_routes_names.dart';
+import 'package:f_yc_pages/src/routes/f_yc_pages_routes_names.dart';
 import 'package:f_yc_storages/f_yc_storages.dart';
 import 'package:f_yc_widgets/f_yc_widgets.dart';
 import 'package:flutter/material.dart';
@@ -87,26 +87,26 @@ class SettingPage extends GetView<SettingController> {
                   title: '用户协议',
                   isArrow: true,
                   onTap: () {
-                    Get.toNamed(FYcRoutesNames.userAgreement);
+                    Get.toNamed(FYcPagesRoutesNames.userAgreement);
                   }),
               WidgetsListItem(
                   title: '隐私政策',
                   isArrow: true,
                   onTap: () {
-                    Get.toNamed(FYcRoutesNames.privacyPolicy);
+                    Get.toNamed(FYcPagesRoutesNames.privacyPolicy);
                   }),
               WidgetsListItem(
                   title: '关于我们',
                   isArrow: true,
                   onTap: () {
-                    Get.toNamed(FYcRoutesNames.aboutUs);
+                    Get.toNamed(FYcPagesRoutesNames.aboutUs);
                   }),
               (FYcStorages.checkLogin() && FYcPages.commonConfig.isInR())
                   ? WidgetsListItem(
                       title: '注销账号',
                       isArrow: true,
                       onTap: () {
-                        Get.toNamed(FYcRoutesNames.cancelAccount);
+                        Get.toNamed(FYcPagesRoutesNames.cancelAccount);
                       })
                   : Container(),
               const WidgetsListGroove(),
