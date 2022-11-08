@@ -1,10 +1,6 @@
-import 'package:f_yc_config/f_yc_config.dart';
 import 'package:f_yc_pages/f_yc_pages.dart';
-import 'package:f_yc_pages/src/routes/f_yc_pages_routes_names.dart';
-import 'package:f_yc_widgets/f_yc_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:f_yc_utils/f_yc_utils.dart';
-import 'index.dart';
 
 class ProfilePage extends GetView<ProfileController> {
   final String itro;

@@ -4,7 +4,6 @@ import 'package:f_yc_pages/f_yc_pages.dart';
 import 'package:f_yc_storages/f_yc_storages.dart';
 import 'package:f_yc_utils/f_yc_utils.dart';
 import 'package:flustars_flutter3/flustars_flutter3.dart';
-import 'index.dart';
 
 class ProfileController extends GetxController {
   ProfileController();

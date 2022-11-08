@@ -3,7 +3,6 @@ import 'package:f_yc_entity/f_yc_entity.dart';
 import 'package:f_yc_pages/f_yc_pages.dart';
 import 'package:f_yc_storages/f_yc_storages.dart';
 import 'package:f_yc_utils/f_yc_utils.dart';
-import 'index.dart';
 
 class MineController extends GetxController {
   MineController();
