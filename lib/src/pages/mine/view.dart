@@ -1,7 +1,6 @@
-import 'package:f_yc_widgets/f_yc_widgets.dart';
+import 'package:f_yc_pages/f_yc_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:f_yc_utils/f_yc_utils.dart';
-import 'index.dart';
 
 class MinePage extends GetView<MineController> {
   final HeaderType headerType;
@@ -29,6 +28,9 @@ class MinePage extends GetView<MineController> {
                         nickname: _.state.nickname,
                         itro: itro,
                         avatar: _.state.avatar,
+                        gestureTapCallback: () {
+                          Get.toNamed(FYcPagesRoutesNames.userInfo);
+                        },
                       ));
                 } else {
                   return sections[index - 1];

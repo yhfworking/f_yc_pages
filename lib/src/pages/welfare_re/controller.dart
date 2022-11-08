@@ -1,6 +1,8 @@
 import 'dart:async';
+import 'package:f_yc_apis/f_yc_apis.dart';
 import 'package:f_yc_entity/f_yc_entity.dart';
 import 'package:f_yc_utils/f_yc_utils.dart';
+import 'package:f_yc_widgets/f_yc_widgets.dart';
 import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 
 import 'index.dart';
@@ -28,7 +30,7 @@ class WelfareReController extends GetxController {
   }
 
   Future<void> loadDataFromService() async {
-    // state.dataList = await YcApisDefault.queryUserWelfareRe();
+    state.dataList = await FYcApisDefault.queryUserWelfareRe();
   }
 
   void handleReceiveWelfare(Map<String, dynamic> map) async {
@@ -38,12 +40,19 @@ class WelfareReController extends GetxController {
       if (amount <= 0 || code.isEmpty) {
         return;
       }
-      // bool isSuccess = await YcApisDefault.receiveUserWelfareRe(amount, code);
-      // if (isSuccess) {
-      //   await loadDataFromService();
-      //   Get.dialog(WidgetsGoldReceive(amount: amount),
-      //       barrierDismissible: false);
-      // }
+      bool isSuccess = await FYcApisDefault.receiveUserWelfareRe(amount, code);
+      if (isSuccess) {
+        await loadDataFromService();
+        Get.dialog(
+            WidgetsGoldReceive(
+              amount: amount,
+              onPressed: () {
+                Get.back();
+                // await YcPangle.showFullScreenVideoAd();
+              },
+            ),
+            barrierDismissible: false);
+      }
     }
   }
 

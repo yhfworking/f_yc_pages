@@ -39,7 +39,11 @@ class SignController extends GetxController {
       EasyLoading.dismiss();
       Get.dialog(WidgetsRewardAdGuide(
         rewardType: 'sign',
-        showRewardVideoAdEvent: () {},
+        showRewardVideoAdEvent: () {
+          // YcPangle.showRewardVideoAd(
+          //   customData: widget.rewardType,
+          // );
+        },
       ));
     });
   }

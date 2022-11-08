@@ -21,9 +21,10 @@ dependencies:
     git: https://github.com/yhfworking/f_yc_entity.git
   f_yc_widgets:
     git: https://github.com/yhfworking/f_yc_widgets.git
-  # f_yc_compose:
-  #   git: https://github.com/yhfworking/f_yc_compose.git
-  # package_info_plus: ^1.4.3+1
+  f_yc_compose:
+    git: https://github.com/yhfworking/f_yc_compose.git
+  f_yc_apis:
+    git: https://github.com/yhfworking/f_yc_apis.git
   sign_in_with_apple: ^4.2.0
   webview_flutter: ^3.0.4
   flustars_flutter3: ^3.0.0

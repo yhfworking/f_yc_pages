@@ -1,3 +1,4 @@
+import 'package:f_yc_apis/f_yc_apis.dart';
 import 'package:f_yc_pages/src/middleware/f_yc_middleware_auth.dart';
 import 'package:f_yc_pages/src/pages/about_us/index.dart';
 import 'package:f_yc_pages/src/pages/cancel_account/index.dart';
@@ -55,17 +56,17 @@ class FYcPagesRoutesPages {
       binding: LoginBinding(),
       page: () => LoginPage(wxLoginCallback: (String code) async {
         if (code.isNotEmpty) {
-          // await ApisAuth.wxLogin(code);
+          await FYcApisDefault.wxLogin('uri', code);
         }
       }, appleLoginCallback: () async {
-        // await ApisAuth.appleLogin();
+        await FYcApisDefault.appleLogin('');
       }),
     ),
     GetPage(
       name: FYcPagesRoutesNames.setting,
       page: () => SettingPage(
         logoutCallback: () async {
-          // await ApisAuth.logout();
+          await FYcApisDefault.logout();
           Get.back();
         },
       ),

@@ -3,7 +3,6 @@ import 'package:flustars_flutter3/flustars_flutter3.dart';
 import 'package:flutter/material.dart';
 import 'package:f_yc_utils/f_yc_utils.dart';
 import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
-
 import 'controller.dart';
 
 class WelfareRePage extends GetView<WelfareReController> {

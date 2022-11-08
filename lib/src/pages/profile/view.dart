@@ -1,3 +1,4 @@
+import 'package:f_yc_compose/f_yc_compose.dart';
 import 'package:f_yc_pages/f_yc_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:f_yc_utils/f_yc_utils.dart';
@@ -52,11 +53,16 @@ class ProfilePage extends GetView<ProfileController> {
                       nickname: _.state.nickname,
                       itro: itro,
                       avatar: _.state.avatar,
+                      gestureTapCallback: () {
+                        Get.toNamed(FYcPagesRoutesNames.userInfo);
+                      },
                     ),
                     const WidgetsListGroove(),
                     WidgetsProfileWallet(
                       balance: _.state.balance,
                       money: _.state.money,
+                      onTap: () {},
+                      submitCashEvent: () {},
                     ),
                     const WidgetsProfileTools(
                       toolsTypes: [
@@ -69,14 +75,27 @@ class ProfilePage extends GetView<ProfileController> {
                     const WidgetsListGroove(),
                     WidgetsProfileBannerAd(),
                     const WidgetsListGroove(),
-                    const WidgetsProfileSectionItem(
+                    WidgetsProfileSectionItem(
                       itemType: ItemType.shareAppToWxSession,
+                      onTap: () {
+                        if (FYcPages.commonConfig.isInR()) {
+                          FYcComposeShare.sharesWithSystem();
+                        } else {
+                          FYcComposeWechat.shareAppToWxSession();
+                        }
+                      },
                     ),
-                    const WidgetsProfileSectionItem(
+                    WidgetsProfileSectionItem(
                       itemType: ItemType.appPraise,
+                      onTap: () {
+                        FYcComposeLaunchReview.toStoreReview();
+                      },
                     ),
-                    const WidgetsProfileSectionItem(
+                    WidgetsProfileSectionItem(
                       itemType: ItemType.setting,
+                      onTap: () {
+                        Get.toNamed(FYcPagesRoutesNames.setting);
+                      },
                     ),
                   ],
                 )),

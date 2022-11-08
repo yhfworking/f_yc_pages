@@ -1,10 +1,7 @@
 import 'package:f_yc_pages/f_yc_pages.dart';
-import 'package:f_yc_pages/src/routes/f_yc_pages_routes_names.dart';
-import 'package:f_yc_widgets/f_yc_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:f_yc_utils/f_yc_utils.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'index.dart';
 
 class WalletPage extends GetView<WalletController> {
   const WalletPage({Key? key}) : super(key: key);

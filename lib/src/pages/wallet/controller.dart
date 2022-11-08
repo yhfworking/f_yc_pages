@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'package:f_yc_apis/f_yc_apis.dart';
+import 'package:f_yc_compose/f_yc_compose.dart';
 import 'package:f_yc_entity/f_yc_entity.dart';
 import 'package:f_yc_storages/f_yc_storages.dart';
 import 'package:f_yc_utils/f_yc_utils.dart';
@@ -40,18 +42,23 @@ class WalletController extends GetxController {
 
   /// 在 onInit() 之后调用 1 帧。这是进入的理想场所
   @override
-  void onReady() {
+  void onReady() async {
     _walletUpdateStreamSubscription = FYcEventBus.instance
         .on<FYcEntitysEventsWalletUpdate>()
         .listen((FYcEntitysEventsWalletUpdate event) {
       _updateWallet();
     });
-
-    // YcApisDefault.getWalletInfo();
+    await FYcApisDefault.getWalletInfo();
     FYcEntitysBehavior entitysBehavior = FYcStorages.behaviorInfo();
     if (!GetUtils.isNull(entitysBehavior)) {
       if (entitysBehavior.lastAppPraiseDate == 0) {
-        Get.dialog(const WidgetsAppPraise(), barrierDismissible: false);
+        Get.dialog(WidgetsAppPraise(onPressed: () async {
+          if (FYcStorages.checkLogin()) {
+            await FYcApisDefault.reportAppPraise();
+          }
+          FYcComposeLaunchReview.toStoreReview();
+          Get.back();
+        }), barrierDismissible: false);
       }
     }
     super.onReady();
