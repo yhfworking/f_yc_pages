@@ -37,8 +37,9 @@ class SignController extends GetxController {
     EasyLoading.show();
     Future.delayed(const Duration(milliseconds: 1500), () {
       EasyLoading.dismiss();
-      Get.dialog(const WidgetsRewardAdGuide(
+      Get.dialog(WidgetsRewardAdGuide(
         rewardType: 'sign',
+        showRewardVideoAdEvent: () {},
       ));
     });
   }
@@ -60,6 +61,7 @@ class SignController extends GetxController {
         EasyLoading.dismiss();
         Get.dialog(WidgetsRewardAdGuide(
           rewardType: string,
+          showRewardVideoAdEvent: () {},
         ));
       });
     }

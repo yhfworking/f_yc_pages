@@ -21,8 +21,6 @@ dependencies:
     git: https://github.com/yhfworking/f_yc_entity.git
   f_yc_widgets:
     git: https://github.com/yhfworking/f_yc_widgets.git
-  # f_yc_apis:
-  #   git: https://github.com/yhfworking/f_yc_apis.git
   # f_yc_compose:
   #   git: https://github.com/yhfworking/f_yc_compose.git
   # package_info_plus: ^1.4.3+1
