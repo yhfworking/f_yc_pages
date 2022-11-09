@@ -1,14 +1,11 @@
+import 'package:f_yc_apis/f_yc_apis.dart';
 import 'package:f_yc_pages/f_yc_pages.dart';
-import 'package:f_yc_pages/src/routes/f_yc_pages_routes_names.dart';
 import 'package:f_yc_storages/f_yc_storages.dart';
-import 'package:f_yc_widgets/f_yc_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:f_yc_utils/f_yc_utils.dart';
-import 'controller.dart';
 
 class SettingPage extends GetView<SettingController> {
-  final VoidCallback logoutCallback;
-  const SettingPage({Key? key, required this.logoutCallback}) : super(key: key);
+  const SettingPage({Key? key}) : super(key: key);
 
   // Widget _cancellationWidgt() {
   //   return Container(
@@ -53,8 +50,8 @@ class SettingPage extends GetView<SettingController> {
               minWidth: 120,
               elevation: 0,
               onPressed: () async {
+                await FYcApisDefault.logout();
                 Get.back();
-                logoutCallback();
               },
               color: FYcPages.commonConfig.primaryColor,
               child: const Text(
