@@ -4,7 +4,11 @@ import 'package:f_yc_utils/f_yc_utils.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class WalletPage extends GetView<WalletController> {
-  const WalletPage({Key? key}) : super(key: key);
+  final VoidCallback logWalletEvent;
+  final VoidCallback logCashOutEvent;
+  const WalletPage(
+      {Key? key, required this.logWalletEvent, required this.logCashOutEvent})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return GetBuilder<WalletController>(
@@ -14,9 +18,7 @@ class WalletPage extends GetView<WalletController> {
               title: const Text('我的钱包'),
               actions: [
                 TextButton(
-                    onPressed: () {
-                      Get.toNamed(FYcPagesRoutesNames.logWallet);
-                    },
+                    onPressed: logWalletEvent,
                     style: ButtonStyle(
                         overlayColor:
                             MaterialStateProperty.all(Colors.transparent)),
@@ -139,9 +141,7 @@ class WalletPage extends GetView<WalletController> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 TextButton(
-                                  onPressed: () {
-                                    Get.toNamed(FYcPagesRoutesNames.logCashOut);
-                                  },
+                                  onPressed: logCashOutEvent,
                                   child: Text(
                                     '兑现记录 >',
                                     style: TextStyle(

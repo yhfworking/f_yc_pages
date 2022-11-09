@@ -46,7 +46,7 @@ class WelfareReController extends GetxController {
         Get.dialog(
             WidgetsGoldReceive(
               amount: amount,
-              onPressed: () {
+              moreGoodsEvent: () {
                 Get.back();
                 // await YcPangle.showFullScreenVideoAd();
               },

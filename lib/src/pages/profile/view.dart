@@ -6,11 +6,21 @@ import 'package:f_yc_utils/f_yc_utils.dart';
 class ProfilePage extends GetView<ProfileController> {
   final String itro;
   final HeaderType headerType;
-  const ProfilePage({
-    Key? key,
-    required this.itro,
-    required this.headerType,
-  }) : super(key: key);
+  final String welfareReRoutesNames;
+  final String signRoutesNames;
+  final String userInfoRoutesNames;
+  final String walletRoutesNames;
+  final String settingRoutesNames;
+  const ProfilePage(
+      {Key? key,
+      required this.itro,
+      required this.headerType,
+      required this.welfareReRoutesNames,
+      required this.signRoutesNames,
+      required this.userInfoRoutesNames,
+      required this.walletRoutesNames,
+      required this.settingRoutesNames})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,13 +33,13 @@ class ProfilePage extends GetView<ProfileController> {
                 icon: Icon(Icons.monetization_on_outlined,
                     size: 28, color: FYcPages.commonConfig.primaryColor),
                 onPressed: () {
-                  Get.toNamed(FYcPagesRoutesNames.welfareRe);
+                  Get.toNamed(welfareReRoutesNames);
                 }),
             actions: [
               Obx(
                 () => TextButton(
                   onPressed: () async {
-                    Get.toNamed(FYcPagesRoutesNames.sign);
+                    Get.toNamed(signRoutesNames);
                   },
                   style: ButtonStyle(
                     overlayColor: MaterialStateProperty.all(Colors.transparent),
@@ -53,15 +63,17 @@ class ProfilePage extends GetView<ProfileController> {
                       nickname: _.state.nickname,
                       itro: itro,
                       avatar: _.state.avatar,
-                      gestureTapCallback: () {
-                        Get.toNamed(FYcPagesRoutesNames.userInfo);
+                      userInfoEvent: () {
+                        Get.toNamed(userInfoRoutesNames);
                       },
                     ),
                     const WidgetsListGroove(),
                     WidgetsProfileWallet(
                       balance: _.state.balance,
                       money: _.state.money,
-                      onTap: () {},
+                      walletEvent: () {
+                        Get.toNamed(walletRoutesNames);
+                      },
                       submitCashEvent: () {},
                     ),
                     const WidgetsProfileTools(
@@ -77,7 +89,7 @@ class ProfilePage extends GetView<ProfileController> {
                     const WidgetsListGroove(),
                     WidgetsProfileSectionItem(
                       itemType: ItemType.shareAppToWxSession,
-                      onTap: () {
+                      sectionItemEvent: () {
                         if (FYcPages.commonConfig.isInR()) {
                           FYcComposeShare.sharesWithSystem();
                         } else {
@@ -87,15 +99,15 @@ class ProfilePage extends GetView<ProfileController> {
                     ),
                     WidgetsProfileSectionItem(
                       itemType: ItemType.appPraise,
-                      onTap: () {
+                      sectionItemEvent: () {
                         FYcComposeLaunchReview.toStoreReview();
                       },
                     ),
                     WidgetsProfileSectionItem(
                       itemType: ItemType.setting,
-                      onTap: () {
-                        Get.toNamed(FYcPagesRoutesNames.setting);
-                      },
+                      sectionItemEvent: (() {
+                        Get.toNamed(settingRoutesNames);
+                      }),
                     ),
                   ],
                 )),

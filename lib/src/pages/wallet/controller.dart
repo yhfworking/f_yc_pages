@@ -52,7 +52,7 @@ class WalletController extends GetxController {
     FYcEntitysBehavior entitysBehavior = FYcStorages.behaviorInfo();
     if (!GetUtils.isNull(entitysBehavior)) {
       if (entitysBehavior.lastAppPraiseDate == 0) {
-        Get.dialog(WidgetsAppPraise(onPressed: () async {
+        Get.dialog(WidgetsAppPraise(appPraiseEvent: () async {
           if (FYcStorages.checkLogin()) {
             await FYcApisDefault.reportAppPraise();
           }

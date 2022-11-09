@@ -9,7 +9,13 @@ import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 typedef WxLoginCallback = void Function(String code);
 
 class LoginPage extends GetView<LoginController> {
-  const LoginPage({Key? key}) : super(key: key);
+  final String userAgreementRoutesNames;
+  final String privacyPolicyRoutesNames;
+  const LoginPage(
+      {Key? key,
+      required this.userAgreementRoutesNames,
+      required this.privacyPolicyRoutesNames})
+      : super(key: key);
 
   List<Widget> _getLoginButtonList() {
     List<Widget> list = [];
@@ -72,7 +78,7 @@ class LoginPage extends GetView<LoginController> {
             TextSpan(
               recognizer: TapGestureRecognizer()
                 ..onTap = () {
-                  Get.toNamed(FYcPagesRoutesNames.userAgreement);
+                  Get.toNamed(userAgreementRoutesNames);
                 },
               text: '“用户协议”',
               style: TextStyle(
@@ -89,7 +95,7 @@ class LoginPage extends GetView<LoginController> {
             TextSpan(
               recognizer: TapGestureRecognizer()
                 ..onTap = () {
-                  Get.toNamed(FYcPagesRoutesNames.privacyPolicy);
+                  Get.toNamed(privacyPolicyRoutesNames);
                 },
               text: '“隐私政策”',
               style: TextStyle(

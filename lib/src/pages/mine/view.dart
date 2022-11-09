@@ -6,12 +6,14 @@ class MinePage extends GetView<MineController> {
   final HeaderType headerType;
   final String itro;
   final List<Widget> sections;
-  const MinePage({
-    Key? key,
-    required this.itro,
-    required this.headerType,
-    required this.sections,
-  }) : super(key: key);
+  final String userInfoRoutesNames;
+  const MinePage(
+      {Key? key,
+      required this.itro,
+      required this.headerType,
+      required this.sections,
+      required this.userInfoRoutesNames})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +30,8 @@ class MinePage extends GetView<MineController> {
                         nickname: _.state.nickname,
                         itro: itro,
                         avatar: _.state.avatar,
-                        gestureTapCallback: () {
-                          Get.toNamed(FYcPagesRoutesNames.userInfo);
+                        userInfoEvent: () {
+                          Get.toNamed(userInfoRoutesNames);
                         },
                       ));
                 } else {

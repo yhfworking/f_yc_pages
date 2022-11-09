@@ -5,7 +5,17 @@ import 'package:flutter/material.dart';
 import 'package:f_yc_utils/f_yc_utils.dart';
 
 class SettingPage extends GetView<SettingController> {
-  const SettingPage({Key? key}) : super(key: key);
+  final String userAgreementRoutesNames;
+  final String privacyPolicyRoutesNames;
+  final String aboutUsRoutesNames;
+  final String cancelAccountRoutesNames;
+  const SettingPage(
+      {Key? key,
+      required this.userAgreementRoutesNames,
+      required this.privacyPolicyRoutesNames,
+      required this.aboutUsRoutesNames,
+      required this.cancelAccountRoutesNames})
+      : super(key: key);
 
   // Widget _cancellationWidgt() {
   //   return Container(
@@ -83,27 +93,27 @@ class SettingPage extends GetView<SettingController> {
               WidgetsListItem(
                   title: '用户协议',
                   isArrow: true,
-                  onTap: () {
-                    Get.toNamed(FYcPagesRoutesNames.userAgreement);
+                  itemEvent: () {
+                    Get.toNamed(userAgreementRoutesNames);
                   }),
               WidgetsListItem(
                   title: '隐私政策',
                   isArrow: true,
-                  onTap: () {
-                    Get.toNamed(FYcPagesRoutesNames.privacyPolicy);
+                  itemEvent: () {
+                    Get.toNamed(privacyPolicyRoutesNames);
                   }),
               WidgetsListItem(
                   title: '关于我们',
                   isArrow: true,
-                  onTap: () {
-                    Get.toNamed(FYcPagesRoutesNames.aboutUs);
+                  itemEvent: () {
+                    Get.toNamed(aboutUsRoutesNames);
                   }),
               (FYcStorages.checkLogin() && FYcPages.commonConfig.isInR())
                   ? WidgetsListItem(
                       title: '注销账号',
                       isArrow: true,
-                      onTap: () {
-                        Get.toNamed(FYcPagesRoutesNames.cancelAccount);
+                      itemEvent: () {
+                        Get.toNamed(cancelAccountRoutesNames);
                       })
                   : Container(),
               const WidgetsListGroove(),
