@@ -6,20 +6,7 @@ import 'package:f_yc_utils/f_yc_utils.dart';
 class ProfilePage extends GetView<ProfileController> {
   final String itro;
   final HeaderType headerType;
-  final String welfareReRoutesNames;
-  final String signRoutesNames;
-  final String userInfoRoutesNames;
-  final String walletRoutesNames;
-  final String settingRoutesNames;
-  const ProfilePage(
-      {Key? key,
-      required this.itro,
-      required this.headerType,
-      required this.welfareReRoutesNames,
-      required this.signRoutesNames,
-      required this.userInfoRoutesNames,
-      required this.walletRoutesNames,
-      required this.settingRoutesNames})
+  const ProfilePage({Key? key, required this.itro, required this.headerType})
       : super(key: key);
 
   @override
@@ -33,13 +20,13 @@ class ProfilePage extends GetView<ProfileController> {
                 icon: Icon(Icons.monetization_on_outlined,
                     size: 28, color: FYcPages.commonConfig.primaryColor),
                 onPressed: () {
-                  Get.toNamed(welfareReRoutesNames);
+                  Get.toNamed(FYcPagesRoutesNames.welfareRe);
                 }),
             actions: [
               Obx(
                 () => TextButton(
                   onPressed: () async {
-                    Get.toNamed(signRoutesNames);
+                    Get.toNamed(FYcPagesRoutesNames.sign);
                   },
                   style: ButtonStyle(
                     overlayColor: MaterialStateProperty.all(Colors.transparent),
@@ -64,7 +51,7 @@ class ProfilePage extends GetView<ProfileController> {
                       itro: itro,
                       avatar: _.state.avatar,
                       userInfoEvent: () {
-                        Get.toNamed(userInfoRoutesNames);
+                        Get.toNamed(FYcPagesRoutesNames.userInfo);
                       },
                     ),
                     const WidgetsListGroove(),
@@ -72,7 +59,7 @@ class ProfilePage extends GetView<ProfileController> {
                       balance: _.state.balance,
                       money: _.state.money,
                       walletEvent: () {
-                        Get.toNamed(walletRoutesNames);
+                        Get.toNamed(FYcPagesRoutesNames.wallet);
                       },
                       submitCashEvent: () {},
                     ),
@@ -106,7 +93,7 @@ class ProfilePage extends GetView<ProfileController> {
                     WidgetsProfileSectionItem(
                       itemType: ItemType.setting,
                       sectionItemEvent: (() {
-                        Get.toNamed(settingRoutesNames);
+                        Get.toNamed(FYcPagesRoutesNames.setting);
                       }),
                     ),
                   ],

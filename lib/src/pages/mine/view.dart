@@ -6,13 +6,11 @@ class MinePage extends GetView<MineController> {
   final HeaderType headerType;
   final String itro;
   final List<Widget> sections;
-  final String userInfoRoutesNames;
   const MinePage(
       {Key? key,
       required this.itro,
       required this.headerType,
-      required this.sections,
-      required this.userInfoRoutesNames})
+      required this.sections})
       : super(key: key);
 
   @override
@@ -31,7 +29,7 @@ class MinePage extends GetView<MineController> {
                         itro: itro,
                         avatar: _.state.avatar,
                         userInfoEvent: () {
-                          Get.toNamed(userInfoRoutesNames);
+                          Get.toNamed(FYcPagesRoutesNames.userInfo);
                         },
                       ));
                 } else {
