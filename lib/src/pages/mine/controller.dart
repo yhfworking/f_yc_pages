@@ -37,6 +37,7 @@ class MineController extends GetxController {
     _userInfoUpdateStreamSubscription = FYcEventBus.instance
         .on<FYcEntitysEventsUserInfoUpdate>()
         .listen((FYcEntitysEventsUserInfoUpdate event) {
+      FYcLogger.write('---mine收到更新用户信息通知---');
       resetUserInfo();
     });
     super.onReady();
