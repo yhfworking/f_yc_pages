@@ -52,6 +52,7 @@ class SettingPage extends GetView<SettingController> {
               onPressed: () async {
                 await FYcApisDefault.logout();
                 Get.back();
+                Get.back();
               },
               color: FYcPages.commonConfig.primaryColor,
               child: const Text(
