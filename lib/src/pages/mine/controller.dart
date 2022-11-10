@@ -12,6 +12,7 @@ class MineController extends GetxController {
 
   void resetUserInfo() {
     FYcEntitysUser entitysUser = FYcStorages.userInfo();
+    FYcLogger.write('---entitysUser---$entitysUser');
     if (entitysUser.nickname!.isNotEmpty) {
       state.nickname = entitysUser.nickname;
     } else {
