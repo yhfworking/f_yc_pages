@@ -12,7 +12,6 @@ class MineController extends GetxController {
 
   void resetUserInfo() {
     FYcEntitysUser entitysUser = FYcStorages.userInfo();
-    FYcLogger.write('---entitysUser---$entitysUser');
     if (entitysUser.nickname!.isNotEmpty) {
       state.nickname = entitysUser.nickname;
     } else {
@@ -38,7 +37,6 @@ class MineController extends GetxController {
     _userInfoUpdateStreamSubscription = FYcEventBus.instance
         .on<FYcEntitysEventsUserInfoUpdate>()
         .listen((FYcEntitysEventsUserInfoUpdate event) {
-      FYcLogger.write('---mine收到更新用户信息通知---');
       resetUserInfo();
     });
     super.onReady();
