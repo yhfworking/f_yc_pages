@@ -40,7 +40,7 @@ class LoginPage extends GetView<LoginController> {
                 .listen((res) async {
               if (res is WeChatAuthResponse) {
                 if (res.code != null) {
-                  FYcFunction.debounce('wxLoginDebounce', () async {
+                  FYcFunction.throttle('wxLoginDebounce', () async {
                     await FYcApisDefault.wxLogin(res.code!);
                     Get.back();
                   }, duration: const Duration(seconds: 2));
