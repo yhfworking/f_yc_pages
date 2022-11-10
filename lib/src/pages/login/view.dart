@@ -33,17 +33,15 @@ class LoginPage extends GetView<LoginController> {
         margin: const EdgeInsets.only(bottom: 30),
         child: ElevatedButton(
           onPressed: () {
-            sendWeChatAuth(scope: "snsapi_userinfo", state: "flutter_wx_auth")
+            sendWeChatAuth(scope: "snsapi_userinfo", state: "f_yc_wx_auth")
                 .then((data) {});
             weChatResponseEventHandler
                 .distinct((a, b) => a == b)
                 .listen((res) async {
               if (res is WeChatAuthResponse) {
                 if (res.code != null) {
-                  FYcFunction.throttle('wxLoginDebounce', () async {
-                    await FYcApisDefault.wxLogin(res.code!);
-                    Get.back();
-                  }, duration: const Duration(seconds: 2));
+                  await FYcApisDefault.wxLogin(res.code!);
+                  Get.back();
                 }
               }
             });
