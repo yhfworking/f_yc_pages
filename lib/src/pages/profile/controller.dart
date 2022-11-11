@@ -27,7 +27,6 @@ class ProfileController extends GetxController {
       state.avatar = FYcPages.commonConfig.defalutAvatarUrl;
     }
     FYcEntitysWallet entitysWallet = FYcStorages.walletInfo();
-    log('---收到钱包信息更新通知--entitysWallet-----${entitysWallet.toJson()}');
     if (!GetUtils.isNull(entitysWallet)) {
       state.balance = entitysWallet.balance;
       state.money = entitysWallet.money;
@@ -65,7 +64,6 @@ class ProfileController extends GetxController {
     _walletUpdateStreamSubscription = FYcEventBus.instance
         .on<FYcEntitysEventsWalletUpdate>()
         .listen((FYcEntitysEventsWalletUpdate event) {
-      log('---收到钱包信息更新通知---');
       updateStates();
     });
 
