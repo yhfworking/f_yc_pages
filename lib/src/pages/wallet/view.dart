@@ -121,7 +121,7 @@ class WalletPage extends GetView<WalletController> {
                                   balance: _.state.balance,
                                   money: _.state.money,
                                   submitCashOutEvent: (amount) async {
-                                    if (_.state.money > 0 &&
+                                    if (amount > 0 &&
                                         FYcStorages.checkLogin()) {
                                       Get.back();
                                       bool isSuccess =
