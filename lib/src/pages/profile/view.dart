@@ -22,25 +22,25 @@ class ProfilePage extends GetView<ProfileController> {
                 onPressed: () {
                   Get.toNamed(FYcPagesRoutesNames.welfareRe);
                 }),
-            actions: [
-              Obx(
-                () => TextButton(
-                  onPressed: () async {
-                    Get.toNamed(FYcPagesRoutesNames.sign);
-                  },
-                  style: ButtonStyle(
-                    overlayColor: MaterialStateProperty.all(Colors.transparent),
-                  ),
-                  child: Text(
-                    _.state.isSignToday ? '已签到' : '签到现金',
-                    style: TextStyle(
-                        fontSize: 15,
-                        color: FYcPages.commonConfig.primaryColor,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ),
-              ),
-            ],
+            // actions: [
+            //   Obx(
+            //     () => TextButton(
+            //       onPressed: () async {
+            //         Get.toNamed(FYcPagesRoutesNames.sign);
+            //       },
+            //       style: ButtonStyle(
+            //         overlayColor: MaterialStateProperty.all(Colors.transparent),
+            //       ),
+            //       child: Text(
+            //         _.state.isSignToday ? '已签到' : '签到现金',
+            //         style: TextStyle(
+            //             fontSize: 15,
+            //             color: FYcPages.commonConfig.primaryColor,
+            //             fontWeight: FontWeight.bold),
+            //       ),
+            //     ),
+            //   ),
+            // ],
           ),
           body: SafeArea(
             child: Obx(() => ListView(

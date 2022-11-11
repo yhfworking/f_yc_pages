@@ -14,6 +14,7 @@ class FYcPagesRoutesNames {
   static const wallet = '${_prefixName}wallet';
   static const logWallet = '${_prefixName}logWallet';
   static const logCashOut = '${_prefixName}logCashOut';
+  static const welfare = '${_prefixName}welfare';
   static const welfareRe = '${_prefixName}welfareRe';
   static const sign = '${_prefixName}sign';
   static const luckyTurntable = '${_prefixName}luckyTurntable';

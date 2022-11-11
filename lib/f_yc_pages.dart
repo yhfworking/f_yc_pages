@@ -30,8 +30,8 @@ export './src/pages/user_info/index.dart';
 export './src/pages/wallet/index.dart';
 export './src/pages/website/index.dart';
 export './src/pages/welfare_re/index.dart';
+export './src/pages/welfare/index.dart';
 export 'src/routes/f_yc_pages_routes_names.dart';
-export 'src/routes/f_yc_pages_routes_pages.dart';
 
 class FYcPages {
   static FYcConfigCommonConfig commonConfig = FYcConfigConfigurator.instance
