@@ -1,3 +1,4 @@
+import 'package:f_yc_apis/f_yc_apis.dart';
 import 'package:f_yc_utils/f_yc_utils.dart';
 import 'index.dart';
 
@@ -15,8 +16,8 @@ class LogWalletController extends GetxController {
   /// 在 onInit() 之后调用 1 帧。这是进入的理想场所
   @override
   void onReady() async {
-    // List dataList = await YcApisDefault.queryWalletLog();
-    // state.walletLogs = dataList;
+    List dataList = await FYcApisDefault.queryWalletLog();
+    state.walletLogs = dataList;
     super.onReady();
   }
 

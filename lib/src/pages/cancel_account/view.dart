@@ -1,3 +1,4 @@
+import 'package:f_yc_apis/f_yc_apis.dart';
 import 'package:f_yc_pages/f_yc_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:f_yc_utils/f_yc_utils.dart';
@@ -69,7 +70,7 @@ class CancelAccountPage extends GetView<CancelAccountController> {
                             elevation: 0,
                             onPressed: () async {
                               Get.back();
-                              // await ApisAuth.logout();
+                              await FYcApisDefault.logout();
                               Get.back();
                               Get.back();
                             },

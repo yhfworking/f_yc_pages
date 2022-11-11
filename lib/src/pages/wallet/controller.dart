@@ -5,6 +5,7 @@ import 'package:f_yc_entity/f_yc_entity.dart';
 import 'package:f_yc_storages/f_yc_storages.dart';
 import 'package:f_yc_utils/f_yc_utils.dart';
 import 'package:f_yc_widgets/f_yc_widgets.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 import 'index.dart';
 
@@ -23,14 +24,14 @@ class WalletController extends GetxController {
   }
 
   void handleCashOut(int amount) async {
-    // if (amount < 1000) {
-    //   SnackbarUtils.showError('请先选择您要兑换的金额');
-    //   return;
-    // }
-    // if (await YcApisDefault.submitCashOut(amount)) {
-    //   Get.back();
-    //   SnackbarUtils.showSuccess('提现申请成功，请耐心等待审核！');
-    // }
+    if (amount < 1000) {
+      EasyLoading.showError('请先选择您要兑换的金额');
+      return;
+    }
+    if (await FYcApisDefault.submitCashOut(amount)) {
+      Get.back();
+      EasyLoading.showSuccess('提现申请成功，请耐心等待审核！');
+    }
   }
 
   /// 在 widget 内存中分配后立即调用。
