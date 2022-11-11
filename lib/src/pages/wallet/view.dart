@@ -1,6 +1,9 @@
+import 'package:f_yc_apis/f_yc_apis.dart';
 import 'package:f_yc_pages/f_yc_pages.dart';
+import 'package:f_yc_storages/f_yc_storages.dart';
 import 'package:flutter/material.dart';
 import 'package:f_yc_utils/f_yc_utils.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class WalletPage extends GetView<WalletController> {
@@ -115,8 +118,22 @@ class WalletPage extends GetView<WalletController> {
                             child: ElevatedButton(
                               onPressed: () {
                                 Get.bottomSheet(WidgetsCashOutOptions(
-                                    balance: _.state.balance,
-                                    money: _.state.money));
+                                  balance: _.state.balance,
+                                  money: _.state.money,
+                                  submitCashOutEvent: (amount) async {
+                                    if (_.state.money > 0 &&
+                                        FYcStorages.checkLogin()) {
+                                      Get.back();
+                                      bool isSuccess =
+                                          await FYcApisDefault.submitCashOut(
+                                              amount);
+                                      if (isSuccess) {
+                                        EasyLoading.showSuccess(
+                                            '提交成功，请耐心等待审核！');
+                                      }
+                                    }
+                                  },
+                                ));
                               },
                               style: ButtonStyle(
                                   elevation: MaterialStateProperty.all(0),
