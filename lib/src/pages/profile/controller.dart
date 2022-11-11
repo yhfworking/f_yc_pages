@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 import 'package:f_yc_entity/f_yc_entity.dart';
 import 'package:f_yc_pages/f_yc_pages.dart';
 import 'package:f_yc_storages/f_yc_storages.dart';
@@ -26,9 +27,13 @@ class ProfileController extends GetxController {
       state.avatar = FYcPages.commonConfig.defalutAvatarUrl;
     }
     FYcEntitysWallet entitysWallet = FYcStorages.walletInfo();
+    log('---收到钱包信息更新通知--entitysWallet-----${entitysWallet.toJson()}');
     if (!GetUtils.isNull(entitysWallet)) {
       state.balance = entitysWallet.balance;
       state.money = entitysWallet.money;
+    } else {
+      state.balance = 0;
+      state.money = '0.00';
     }
     FYcEntitysBehavior entitysBehavior = FYcStorages.behaviorInfo();
     if (!GetUtils.isNull(entitysBehavior)) {
@@ -37,7 +42,8 @@ class ProfileController extends GetxController {
       } else {
         state.isSignToday = false;
       }
-    }
+    } else {}
+    state.isSignToday = false;
   }
 
   /// 在 widget 内存中分配后立即调用。
@@ -59,6 +65,7 @@ class ProfileController extends GetxController {
     _walletUpdateStreamSubscription = FYcEventBus.instance
         .on<FYcEntitysEventsWalletUpdate>()
         .listen((FYcEntitysEventsWalletUpdate event) {
+      log('---收到钱包信息更新通知---');
       updateStates();
     });
 
