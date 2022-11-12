@@ -1,5 +1,7 @@
 import 'dart:async';
+import 'package:f_yc_apis/f_yc_apis.dart';
 import 'package:f_yc_entity/f_yc_entity.dart';
+import 'package:f_yc_pangle/f_yc_pangle.dart';
 import 'package:f_yc_storages/f_yc_storages.dart';
 import 'package:f_yc_utils/f_yc_utils.dart';
 import 'package:f_yc_widgets/f_yc_widgets.dart';
@@ -38,11 +40,9 @@ class SignController extends GetxController {
     Future.delayed(const Duration(milliseconds: 1500), () {
       EasyLoading.dismiss();
       Get.dialog(WidgetsRewardAdGuide(
-        rewardType: 'sign',
         showRewardVideoAdEvent: () {
-          // YcPangle.showRewardVideoAd(
-          //   customData: widget.rewardType,
-          // );
+          FYcPangle.showRewardVideoAd(
+              key: 'sign', userId: FYcStorages.userInfo().userId);
         },
       ));
     });
@@ -64,8 +64,10 @@ class SignController extends GetxController {
       Future.delayed(const Duration(milliseconds: 1500), () {
         EasyLoading.dismiss();
         Get.dialog(WidgetsRewardAdGuide(
-          rewardType: string,
-          showRewardVideoAdEvent: () {},
+          showRewardVideoAdEvent: () {
+            FYcPangle.showRewardVideoAd(
+                key: string, userId: FYcStorages.userInfo().userId);
+          },
         ));
       });
     }
@@ -79,13 +81,13 @@ class SignController extends GetxController {
 
   /// 在 onInit() 之后调用 1 帧。这是进入的理想场所
   @override
-  void onReady() {
+  void onReady() async {
     _behaviorUpdateStreamSubscription = FYcEventBus.instance
         .on<FYcEntitysEventsBehaviorUpdate>()
         .listen((FYcEntitysEventsBehaviorUpdate event) {
       _updateBehaviorInfo();
     });
-    // YcApisDefault.getBehaviorInfo();
+    await FYcApisDefault.getBehaviorInfo();
     super.onReady();
   }
 

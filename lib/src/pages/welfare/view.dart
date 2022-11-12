@@ -1,5 +1,6 @@
 import 'package:f_yc_apis/f_yc_apis.dart';
 import 'package:f_yc_pages/src/routes/f_yc_pages_routes_names.dart';
+import 'package:f_yc_pangle/f_yc_pangle.dart';
 import 'package:f_yc_storages/f_yc_storages.dart';
 import 'package:f_yc_widgets/f_yc_widgets.dart';
 import 'package:flutter/material.dart';
@@ -62,8 +63,13 @@ class WelfarePage extends GetView<WelfareController> {
                                 EasyLoading.dismiss();
                                 if (FYcStorages.isRewardAdEnableShow()) {
                                   Get.dialog(WidgetsRewardAdGuide(
-                                    rewardType: 'lotteryRe',
-                                    showRewardVideoAdEvent: () {},
+                                    showRewardVideoAdEvent: () {
+                                      FYcPangle.showRewardVideoAd(
+                                          key: 'lotteryRe',
+                                          amount: amount,
+                                          userId:
+                                              FYcStorages.userInfo().userId);
+                                    },
                                   ));
                                 } else {
                                   Get.dialog(
