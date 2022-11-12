@@ -12,13 +12,13 @@ class WelfareController extends GetxController {
   final state = WelfareState();
   late StreamSubscription _remoteConfigUpdateStreamSubscription;
 
-  List<Widget> toAppsWidget(List apps) {
+  List<Widget> toAppsWidget(List<FYcEntitysRemoteConfigApp> apps) {
     List<Widget> widgets = [];
     if (apps.isNotEmpty) {
       state.appsWidgetsHeight = ((Get.width - 20) / 3.0 + 15) * apps.length;
       for (var element in apps) {
-        String image = element['image'] ?? '';
-        String url = element['url'] ?? '';
+        String image = element.image ?? '';
+        String url = element.url ?? '';
         if (image.isNotEmpty && url.isNotEmpty) {
           widgets.add(GestureDetector(
             onTap: () {
