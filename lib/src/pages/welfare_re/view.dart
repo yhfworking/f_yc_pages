@@ -1,9 +1,9 @@
-import 'package:f_yc_widgets/f_yc_widgets.dart';
 import 'package:flustars_flutter3/flustars_flutter3.dart';
 import 'package:flutter/material.dart';
 import 'package:f_yc_utils/f_yc_utils.dart';
 import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 import 'controller.dart';
+import 'widgets/widgets.dart';
 
 class WelfareRePage extends GetView<WelfareReController> {
   const WelfareRePage({Key? key}) : super(key: key);
@@ -33,7 +33,7 @@ class WelfareRePage extends GetView<WelfareReController> {
                   child: ListView.builder(
                     itemBuilder: (BuildContext context, int index) {
                       if (index == 0) {
-                        return const WidgetsWelfareReBannerAd();
+                        return const WidgetsWBannerAd();
                       }
                       return GestureDetector(
                           onTap: () {

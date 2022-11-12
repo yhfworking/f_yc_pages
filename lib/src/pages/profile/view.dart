@@ -2,6 +2,7 @@ import 'package:f_yc_compose/f_yc_compose.dart';
 import 'package:f_yc_pages/f_yc_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:f_yc_utils/f_yc_utils.dart';
+import 'widgets/widgets.dart';
 
 class ProfilePage extends GetView<ProfileController> {
   final String itro;
@@ -72,7 +73,7 @@ class ProfilePage extends GetView<ProfileController> {
                       ],
                     ),
                     const WidgetsListGroove(),
-                    WidgetsProfileBannerAd(),
+                    WidgetsBannerAd(),
                     const WidgetsListGroove(),
                     WidgetsProfileSectionItem(
                       itemType: ItemType.shareAppToWxSession,

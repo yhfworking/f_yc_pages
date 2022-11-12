@@ -37,4 +37,7 @@ class FYcPages {
   static FYcConfigCommonConfig commonConfig = FYcConfigConfigurator.instance
       .getConfig(configId: KIT_CONFIG_ID)
       .commonConfig;
+  static FYcConfigPangleConfig pangleConfig = FYcConfigConfigurator.instance
+      .getConfig(configId: KIT_CONFIG_ID)
+      .pangleConfig;
 }

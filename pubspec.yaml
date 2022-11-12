@@ -25,6 +25,8 @@ dependencies:
     git: https://github.com/yhfworking/f_yc_compose.git
   f_yc_apis:
     git: https://github.com/yhfworking/f_yc_apis.git
+  f_yc_pangle:
+    git: https://github.com/yhfworking/f_yc_pangle.git
   sign_in_with_apple: ^4.2.0
   webview_flutter: ^3.0.4
   flustars_flutter3: ^3.0.0
