@@ -14,14 +14,8 @@ class WelfareRePage extends GetView<WelfareReController> {
       builder: (_) {
         return Scaffold(
             appBar: AppBar(
-                title: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: const [
-                Icon(Icons.monetization_on_outlined, size: 24),
-                Text('福利红包')
-              ],
-            )),
+              title: const Text('福利红包'),
+            ),
             body: SafeArea(
               child: Obx(() => SmartRefresher(
                   enablePullDown: true,
