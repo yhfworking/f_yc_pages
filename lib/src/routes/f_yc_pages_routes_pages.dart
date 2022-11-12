@@ -20,6 +20,7 @@ import 'package:f_yc_pages/src/pages/user_info/index.dart';
 import 'package:f_yc_pages/src/pages/wallet/index.dart';
 import 'package:f_yc_pages/src/pages/website/index.dart';
 import 'package:f_yc_pages/src/pages/welfare/index.dart';
+import 'package:f_yc_pages/src/pages/welfare_re/index.dart';
 import 'package:f_yc_storages/f_yc_storages.dart';
 import 'package:f_yc_utils/f_yc_utils.dart';
 import 'f_yc_pages_routes_names.dart';
@@ -56,6 +57,12 @@ class FYcPagesRoutesPages {
       page: () => const WelfarePage(),
       middlewares: [FYcMiddlewareAuth()],
       binding: WelfareBinding(),
+    ),
+    GetPage(
+      name: FYcPagesRoutesNames.welfareRe,
+      page: () => const WelfareRePage(),
+      middlewares: [FYcMiddlewareAuth()],
+      binding: WelfareReBinding(),
     ),
     GetPage(
       name: FYcPagesRoutesNames.login,

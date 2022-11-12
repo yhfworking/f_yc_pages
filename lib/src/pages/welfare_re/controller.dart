@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:f_yc_apis/f_yc_apis.dart';
 import 'package:f_yc_entity/f_yc_entity.dart';
+import 'package:f_yc_pangle/f_yc_pangle.dart';
 import 'package:f_yc_utils/f_yc_utils.dart';
 import 'package:f_yc_widgets/f_yc_widgets.dart';
 import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
@@ -46,9 +47,9 @@ class WelfareReController extends GetxController {
         Get.dialog(
             WidgetsGoldReceive(
               amount: amount,
-              moreGoodsEvent: () {
+              moreGoodsEvent: () async {
                 Get.back();
-                // await YcPangle.showFullScreenVideoAd();
+                await FYcPangle.showFullScreenVideoAd();
               },
             ),
             barrierDismissible: false);
