@@ -1,11 +1,11 @@
 library f_yc_pages;
 
-import 'package:f_yc_compose/f_yc_compose.dart';
 import 'package:f_yc_config/f_yc_config.dart';
 export 'package:f_yc_widgets/f_yc_widgets.dart';
 export './src/middleware/f_yc_middleware_auth.dart';
 export './src/pages/about_us/index.dart';
 export './src/pages/cancel_account/index.dart';
+export './src/pages/error_network/index.dart';
 export './src/pages/daily_task/index.dart';
 export './src/pages/gold_intro/index.dart';
 export './src/pages/invite_friends/index.dart';
