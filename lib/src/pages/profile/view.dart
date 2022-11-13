@@ -64,14 +64,14 @@ class ProfilePage extends GetView<ProfileController> {
                       },
                       submitCashEvent: () {},
                     ),
-                    const WidgetsProfileTools(
-                      toolsTypes: [
-                        ProfileToolsType.dailyTasks,
-                        ProfileToolsType.ranking,
-                        ProfileToolsType.square,
-                        ProfileToolsType.introduction,
-                      ],
-                    ),
+                    // const WidgetsProfileTools(
+                    //   toolsTypes: [
+                    //     ProfileToolsType.dailyTasks,
+                    //     ProfileToolsType.ranking,
+                    //     ProfileToolsType.square,
+                    //     ProfileToolsType.introduction,
+                    //   ],
+                    // ),
                     const WidgetsListGroove(),
                     WidgetsBannerAd(),
                     const WidgetsListGroove(),
