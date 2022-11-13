@@ -1,6 +1,7 @@
 class FYcPagesRoutesNames {
   static const _prefixName = '/f_yc_';
   static const undefined = '${_prefixName}undefined';
+  static const errorNetworkd = '${_prefixName}errorNetworkd';
   static const website = '${_prefixName}website';
   static const privacyPolicy = '${_prefixName}privacyPolicy';
   static const userAgreement = '${_prefixName}userAgreement';
