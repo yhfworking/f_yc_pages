@@ -75,7 +75,11 @@ class WelfarePage extends GetView<WelfareController> {
                                   Get.dialog(
                                       WidgetsGoldReceive(
                                         amount: amount,
-                                        moreGoodsEvent: () {},
+                                        moreGoodsEvent: () async {
+                                          Get.back();
+                                          await FYcPangle
+                                              .showFullScreenVideoAd();
+                                        },
                                       ),
                                       barrierDismissible: false);
                                 }
