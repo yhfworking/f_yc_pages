@@ -60,29 +60,55 @@ class WelfarePage extends GetView<WelfareController> {
                             } else {
                               String logId = response['logId'] ?? '';
                               if (logId.isNotEmpty) {
+                                bool isRewardAdEnableShow =
+                                    FYcStorages.isRewardAdEnableShow();
                                 EasyLoading.dismiss();
-                                if (FYcStorages.isRewardAdEnableShow()) {
-                                  Get.dialog(WidgetsRewardAdGuide(
-                                    showRewardVideoAdEvent: () {
-                                      FYcPangle.showRewardVideoAd(
-                                          key: 'lotteryRe',
-                                          amount: amount,
-                                          userId:
-                                              FYcStorages.userInfo().userId);
-                                    },
-                                  ));
-                                } else {
-                                  Get.dialog(
-                                      WidgetsGoldReceive(
-                                        amount: amount,
-                                        moreGoodsEvent: () async {
-                                          Get.back();
+                                Get.dialog(
+                                    WidgetsGoldReceive(
+                                      amount: amount,
+                                      buttonText: isRewardAdEnableShow
+                                          ? '限时短视频福利'
+                                          : '继续抢红包',
+                                      buttonEvent: () async {
+                                        Get.back();
+                                        if (isRewardAdEnableShow) {
+                                          Get.dialog(WidgetsRewardAdGuide(
+                                            showRewardVideoAdEvent: () {
+                                              FYcPangle.showRewardVideoAd(
+                                                  key: 'lotteryRe',
+                                                  userId: FYcStorages.userInfo()
+                                                      .userId);
+                                            },
+                                          ));
+                                        } else {
                                           await FYcPangle
                                               .showFullScreenVideoAd();
-                                        },
-                                      ),
-                                      barrierDismissible: false);
-                                }
+                                        }
+                                      },
+                                    ),
+                                    barrierDismissible: true);
+                                // if (FYcStorages.isRewardAdEnableShow()) {
+                                //   Get.dialog(WidgetsRewardAdGuide(
+                                //     showRewardVideoAdEvent: () {
+                                //       FYcPangle.showRewardVideoAd(
+                                //           key: 'lotteryRe',
+                                //           amount: amount,
+                                //           userId:
+                                //               FYcStorages.userInfo().userId);
+                                //     },
+                                //   ));
+                                // } else {
+                                //   Get.dialog(
+                                //       WidgetsGoldReceive(
+                                //         amount: amount,
+                                //         moreGoodsEvent: () async {
+                                //           Get.back();
+                                //           await FYcPangle
+                                //               .showFullScreenVideoAd();
+                                //         },
+                                //       ),
+                                //       barrierDismissible: true);
+                                // }
                               }
                             }
                           },

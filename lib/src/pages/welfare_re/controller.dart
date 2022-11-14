@@ -47,12 +47,13 @@ class WelfareReController extends GetxController {
         Get.dialog(
             WidgetsGoldReceive(
               amount: amount,
-              moreGoodsEvent: () async {
+              buttonText: '知道了',
+              buttonEvent: () async {
                 Get.back();
                 await FYcPangle.showFullScreenVideoAd();
               },
             ),
-            barrierDismissible: false);
+            barrierDismissible: true);
       }
     }
   }
