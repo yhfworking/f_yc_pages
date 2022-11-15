@@ -76,7 +76,7 @@ class WelfarePage extends GetView<WelfareController> {
                                           Get.dialog(WidgetsRewardAdGuide(
                                             showRewardVideoAdEvent: () {
                                               FYcPangle.showRewardVideoAd(
-                                                  key: 'lotteryRe',
+                                                  key: 'timerRewardRe',
                                                   userId: FYcStorages.userInfo()
                                                       .userId);
                                             },
