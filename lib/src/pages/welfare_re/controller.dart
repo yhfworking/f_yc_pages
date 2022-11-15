@@ -53,7 +53,7 @@ class WelfareReController extends GetxController {
                 await FYcPangle.showFullScreenVideoAd();
               },
             ),
-            barrierDismissible: true);
+            barrierDismissible: false);
       }
     }
   }

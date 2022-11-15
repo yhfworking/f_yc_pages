@@ -89,7 +89,7 @@ class WelfarePage extends GetView<WelfareController> {
                                         }
                                       },
                                     ),
-                                    barrierDismissible: true);
+                                    barrierDismissible: false);
                                 // if (FYcStorages.isRewardAdEnableShow()) {
                                 //   Get.dialog(WidgetsRewardAdGuide(
                                 //     showRewardVideoAdEvent: () {
