@@ -59,19 +59,20 @@ class WelfarePage extends GetView<WelfareController> {
                               EasyLoading.showError('很遗憾，没有抢到红包！继续加油！');
                             } else {
                               String logId = response['logId'] ?? '';
+                              bool isShowReward =
+                                  response['isShowReward'] ?? false;
+                              bool isShowInterstitial =
+                                  response['isShowInterstitial'] ?? true;
                               if (logId.isNotEmpty) {
-                                bool isRewardAdEnableShow =
-                                    FYcStorages.isRewardAdEnableShow();
                                 EasyLoading.dismiss();
                                 Get.dialog(
                                     WidgetsGoldReceive(
                                       amount: amount,
-                                      buttonText: isRewardAdEnableShow
-                                          ? '限时短视频福利'
-                                          : '继续抢红包',
+                                      buttonText:
+                                          isShowReward ? '限时短视频福利' : '继续抢红包',
                                       buttonEvent: () async {
                                         Get.back();
-                                        if (isRewardAdEnableShow) {
+                                        if (isShowReward) {
                                           Get.dialog(WidgetsRewardAdGuide(
                                             showRewardVideoAdEvent: () {
                                               FYcPangle.showRewardVideoAd(
@@ -81,8 +82,10 @@ class WelfarePage extends GetView<WelfareController> {
                                             },
                                           ));
                                         } else {
-                                          await FYcPangle
-                                              .showFullScreenVideoAd();
+                                          if (isShowInterstitial) {
+                                            await FYcPangle
+                                                .showFullScreenVideoAd();
+                                          }
                                         }
                                       },
                                     ),
